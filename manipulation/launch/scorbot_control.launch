@@ -1,0 +1,22 @@
+<launch>
+    <!-- Load the joint controller configurations from the yaml file to the parameter server -->
+    <rosparam file="$(find manipulation)/config/scorbot_controllers.yaml" command="load" />
+
+    <!-- Load the controllers -->
+    <node name="controller_spawner" pkg="controller_manager" type="spawner" respawn="false"
+        output="screen" ns="/scorbot" args="joint_state_controller
+                                                base_position_controller
+                                                shoulder_position_controller
+                                                elbow_position_controller
+                                                pitch_position_controller
+                                                roll_position_controller
+                                                pad1_position_controller
+                                                pad2_position_controller" />
+
+    <!-- Convert the joint states to T transforms for RViz, etc. -->
+    <node name="robot_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher"
+        respawn="false" output="screen">
+        <remap from="/joint_states" to="/scorbot/joint_states" />
+    </node>
+    
+</launch>

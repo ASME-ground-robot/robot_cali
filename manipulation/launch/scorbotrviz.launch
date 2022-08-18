@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<launch>
+  <arg name="model" default="$(find fake_ar_publisher)/scorbot_description/urdf/scorbot_urdf.urdf"/>
+<!--arg name="model" default="$(find fake_ar_publisher)/01-myfirst.urdf"/-->
+
+  <arg name="gui" default="true" />
+  <arg name="rvizconfig" default="$(find fake_ar_publisher)/rviz/urdf.rviz" />
+
+    <param name="robot_description" textfile="$(arg model)"/>
+    <param name="use_gui" value="$(arg gui)"/>
+    
+  <!--node name="joint_state_publisher" pkg="joint_state_publisher" type="joint_state_publisher" /-->
+  <node pkg="fake_ar_publisher" type="scorbotpi.py" name="scorbot_joint_state_publisher">
+    <param name="rate" value="1"/>
+    </node>
+  <node name="robot_state_publisher" pkg="robot_state_publisher" type="state_publisher" />
+  <node name="rviz" pkg="rviz" type="rviz" args="-d $(arg rvizconfig)" required="true" />
+</launch>

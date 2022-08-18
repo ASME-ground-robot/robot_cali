@@ -1,0 +1,7 @@
+<?xml version="1.0"?>
+<launch>
+  <param name="robot_description" textfile="$(find fake_ar_publisher)/scorbot_description/urdf/scorbot_urdf.urdf"/>
+  <node pkg="fake_ar_publisher" type="scorbotpi.py" name="scorbot_joint_state_publisher">
+    <param name="rate" value="1"/>
+  </node>
+</launch>

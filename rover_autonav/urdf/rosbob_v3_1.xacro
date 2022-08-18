@@ -1,0 +1,375 @@
+<?xml version='1.0'?>
+
+<robot name="rosbob" xmlns:xacro="http://www.ros.org/wiki/xacro">
+	<xacro:property name="robot_name" value="rosbob" />
+	<xacro:property name="robot_chassis_mass" value="34.5"/>
+	<xacro:property name="robot_chassis_length" value="0.7493"/>
+	<xacro:property name="robot_chassis_width" value="0.41275"/>
+    <xacro:property name="robot_chassis_height" value="0.1778"/>
+	
+
+	<xacro:property name="robot_wheel_mass" value="1"/>
+	<xacro:property name="robot_wheel_length" value="0.112"/>
+	<xacro:property name="robot_wheel_radius" value="0.127"/>
+
+	<xacro:property name="camera_mass" value="0.1"/>
+	<xacro:property name="hokoyu_mass" value="1e-5"/>
+	<xacro:property name="pi" value="3.141592654"/>
+	<xacro:property name="half_pi" value="1.570796327"/>
+	
+	<!-- Make Chassis of Bot -->
+	<link name="base_link">
+		<pose>0 0 0.1 0 0 0</pose>
+
+		<inertial>
+			<mass value="${robot_chassis_mass}"/>
+      		<origin xyz="0.0 0 0" rpy=" 0 0 0"/>
+
+      		<inertia 
+      			ixx="0.5806792822" ixy="0" ixz="0"
+      			iyy="1.705057074" iyz="0"
+      			izz="2.103962526"
+      		/>
+		</inertial>
+
+		<collision name="collision">
+			<origin xyz="0 0 0.3429" rpy=" 0 0 0"/>
+			<geometry>
+				<box size="${robot_chassis_length} ${robot_chassis_width} ${robot_chassis_height}"/>
+			</geometry>
+		</collision>
+
+		<visual name="chassis_visual">
+			<origin xyz="0 0 0.3429" rpy=" 0 0 ${half_pi}"/>
+			<geometry>
+				<mesh filename="package://rover_autonav/meshes_v2/base_link_armless.STL" />
+				<!-- <box size="${robot_chassis_length} ${robot_chassis_width} ${robot_chassis_height}"/> -->
+			</geometry>
+
+		</visual>
+
+	</link>
+
+	
+
+	<!-- Right Wheel Back -->
+	<link name="right_wheel_back">
+		<inertial>
+			<mass value="${robot_wheel_mass}"/>
+			<origin xyz="0 0 0" rpy="0 0 1.5707"/>
+			<inertia
+				ixx="0.005077583333333333" ixy="0.0" ixz="0.0"
+				iyy="0.0080645" iyz="0.0"
+				izz="0.005077583333333333"
+			/>
+		</inertial>
+
+		<visual>
+			<origin xyz="0 0 0" rpy="1.5707 0.0 -1.5707"/>
+			<geometry>
+				<mesh filename="package://rover_autonav/meshes_v2/wheel.STL" />
+				<!-- <cylinder radius="${robot_wheel_radius}" length="${robot_wheel_length}"/> -->
+			</geometry>
+		</visual>
+
+		<collision>
+			<origin xyz="0 0 0" rpy="0 1.5707 1.5707"/>
+			<geometry>
+				<cylinder radius="${robot_wheel_radius}" length="${robot_wheel_length}"/>
+			</geometry>
+		</collision>
+
+	</link>
+
+	<!-- Right Wheel Front-->
+	<link name="right_wheel_front">
+		<inertial>
+			<mass value="${robot_wheel_mass}"/>
+			<origin xyz="0 0 0" rpy="0 1.5707 1.5707"/>
+			<inertia
+				ixx="0.005077583333333333" ixy="0.0" ixz="0.0"
+				iyy="0.0080645" iyz="0.0"
+				izz="0.005077583333333333"
+			/>
+		</inertial>
+
+		<visual>
+			<origin xyz="0 0 0" rpy="1.5707 0.0 -1.5707"/>
+			<geometry>
+				<mesh filename="package://rover_autonav/meshes_v2/wheel.STL" />
+				<!-- <cylinder radius="${robot_wheel_radius}" length="${robot_wheel_length}"/> -->
+			</geometry>
+		</visual>
+
+		<collision>
+			<origin xyz="0 0 0" rpy="0 1.5707 1.5707"/>
+			<geometry>
+				<cylinder radius="${robot_wheel_radius}" length="${robot_wheel_length}"/>
+			</geometry>
+		</collision>
+
+	</link>
+
+
+
+	<!-- Left wheel Back-->
+	<link name="left_wheel_back">
+		<inertial>
+			<mass value="${robot_wheel_mass}"/>
+			<origin xyz="0 0 0" rpy="0 1.5707 1.5707"/>
+			<inertia
+				ixx="0.005077583333333333" ixy="0.0" ixz="0.0"
+				iyy="0.0080645" iyz="0.0"
+				izz="0.005077583333333333"
+			/>
+		</inertial>
+
+		<visual>
+			<origin xyz="0 0 0" rpy="1.5707 0.0 1.5707"/>
+			<geometry>
+				<mesh filename="package://rover_autonav/meshes_v2/wheel.STL" />
+				<!-- <cylinder radius="${robot_wheel_radius}" length="${robot_wheel_length}"/> -->
+			</geometry>
+		</visual>
+
+		<collision>
+			<origin xyz="0 0 0" rpy="0 1.5707 1.5707"/>
+			<geometry>
+				<cylinder radius="${robot_wheel_radius}" length="${robot_wheel_length}"/>
+			</geometry>
+		</collision>
+
+	</link>
+
+
+	<!-- Left wheel Front-->
+	<link name="left_wheel_front">
+		<inertial>
+			<mass value="${robot_wheel_mass}"/>
+			<origin xyz="0 0 0" rpy="0 1.5707 1.5707"/>
+			<inertia
+				ixx="0.005077583333333333" ixy="0.0" ixz="0.0"
+				iyy="0.0080645" iyz="0.0"
+				izz="0.005077583333333333"
+			/>
+		</inertial>
+
+		<visual>
+			<origin xyz="0 0 0" rpy="1.5707 0.0 1.5707"/>
+			<geometry>
+				<mesh filename="package://rover_autonav/meshes_v2/wheel.STL" />
+				<!-- <cylinder radius="${robot_wheel_radius}" length="${robot_wheel_length}"/> -->
+			</geometry>
+		</visual>
+
+		<collision>
+			<origin xyz="0 0 0" rpy="0 1.5707 1.5707"/>
+			<geometry>
+				<cylinder radius="${robot_wheel_radius}" length="${robot_wheel_length}"/>
+			</geometry>
+		</collision>
+
+	</link>
+
+	<!-- Project center to the ground -->
+	<link name="robot_footprint"></link>
+
+	
+	<!-- Hokuyo Lidar -->
+	<link name="hokuyo">
+		<inertial>
+			<mass value="${hokoyu_mass}"/>
+			<origin xyz="0 0 0" rpy="0 0 0"/>
+
+			<inertia
+		        ixx="1e-6" ixy="0.0" ixz="0.0"
+		        iyy="1e-6" iyz="0.0"
+		        izz="1e-6"
+		      />
+		</inertial>
+
+		<visual>
+			<origin xyz="0 0 0" rpy="0 0 0"/>
+			<geometry>
+				<mesh filename="package://rover_autonav/meshes/hokuyo.dae"/>
+			</geometry>
+		</visual>
+
+		<collision>
+			<origin xyz="0 0 0" rpy="0 0 0"/>
+			<geometry>
+				<box size="0.1 0.1 0.1"/>
+			</geometry>
+		</collision>
+	</link>
+
+	
+		<!-- Define Joints -->
+
+	<!-- Right Wheel Joint Back-->
+	<joint type="continuous" name="right_wheel_hinge_back">
+	    <origin xyz="-0.38 -0.38 0.081" rpy="0 0 0" />
+		<!-- <origin xyz="-0.37465 -0.313175 -0.2159" rpy="0 0 0" /> -->
+	    <parent link="base_link"/>
+	    <child link="right_wheel_back" />
+	    <axis xyz="0 1 0" rpy="0 0 0" />
+	    <limit effort="10000" velocity="1000" />
+	    <dynamics damping="1.0" friction="1.0" />
+	</joint>
+
+	<!-- Right Wheel Joint Front-->
+	<joint type="continuous" name="right_wheel_hinge_front">
+	    <origin xyz="0.345 -0.38 0.081" rpy="0 0 0" />
+		<!-- <origin xyz="0.37465 -0.313175 -0.2159" rpy="0 0 0" /> -->
+	    <parent link="base_link"/>
+	    <child link="right_wheel_front" />
+	    <axis xyz="0 1 0" rpy="0 0 0" />
+	    <limit effort="10000" velocity="1000" />
+	    <dynamics damping="1.0" friction="1.0" />
+	</joint>
+
+
+	<!-- Left Wheel Joint Back-->
+	<joint type="continuous" name="left_wheel_hinge_back">
+	    <origin xyz="-0.38 0.38 0.081" rpy="0 0 0" />
+		<!-- <origin xyz="-0.37465 0.313175 -0.2159" rpy="0 0 0" /> -->
+	    <parent link="base_link"/>
+	    <child link="left_wheel_back" />
+	    <axis xyz="0 1 0" rpy="0 0 0" />
+	    <limit effort="10000" velocity="1000" />
+	    <dynamics damping="1.0" friction="1.0" />
+	</joint>
+
+	<!-- Left Wheel Joint Front-->
+	<joint type="continuous" name="left_wheel_hinge_front">
+	    <origin xyz="0.345 0.38 0.081" rpy="0 0 0" />
+		<!-- <origin xyz="0.37465 0.313175 -0.2159" rpy="0 0 0" /> -->
+	    <parent link="base_link"/>
+	    <child link="left_wheel_front" />
+	    <axis xyz="0 1 0" rpy="0 0 0" />
+	    <limit effort="10000" velocity="1000" />
+	    <dynamics damping="1.0" friction="1.0" />
+	</joint>
+
+	<!-- Footprint joint-->
+	<joint name="robot_footprint_joint" type="fixed">
+		<origin xyz="0 0 0" rpy="0 0 0" />
+		<parent link="robot_footprint"/>
+		<child link="base_link" />
+	</joint>
+
+	<!-- Hokoyu Joint -->
+	<joint name="hokuyo_joint" type="fixed">
+	    <!--origin xyz="0.3 0 0.4629" rpy="0 0 0" /-->
+ 	    <origin xyz="0.3 0 0.1829" rpy="0 0 0" />
+	    <parent link="base_link"/>
+	    <child link="hokuyo" />  
+	    <axis xyz="0 1 0"/> 
+	</joint>
+
+    <joint name="arm_fixed_joint" type="fixed">
+      <parent link="base_link" />
+      <child link = "arm_link" />
+      <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0" />
+    </joint>
+
+    <link name="arm_link">
+      <collision>
+        <geometry>
+          <box size="0.01 0.01 0.01"/>
+        </geometry>
+        <origin rpy="0 0 0" xyz="0 0 0"/>
+      </collision>
+    </link>
+<!-- Camera -->
+	<link name="camera">
+		<inertial>
+			<mass value="${camera_mass}"/>
+			<origin xyz="0 0 0" rpy="0 0 0"/>
+			<inertia
+		        ixx="1e-6" ixy="0.0" ixz="0.0"
+		        iyy="1e-6" iyz="0.0"
+		        izz="1e-6"
+		      />
+		</inertial>
+
+		<visual>
+			<origin xyz="0 0 0" rpy="0 0 0"/>
+			<geometry>
+			<mesh filename="package://rover_autonav/meshes/d435.dae"/>
+				<!--box size="0.05 0.05 0.05"/-->
+			</geometry>
+		</visual>
+
+		<collision>
+			<origin xyz="0 0 0" rpy="0 0 0"/>
+			<geometry>
+				<box size="0.05 0.05 0.05"/>
+			</geometry>
+		</collision>
+	</link>
+
+ 	<!-- Camera Joint -->
+	<joint name="camera_joint" type="fixed">
+		<origin xyz="0.25 0.1 0.8592" rpy="1.57 0 1.57" />
+		<parent link="base_link"/>
+		<child link="camera" />
+		<axis xyz="0 1 0"/>
+	</joint>
+
+
+	<!-- Color of bot -->
+	<gazebo reference="left_wheel_front">
+		<material>Gazebo/Black</material>
+		<kp>1000000.0</kp> <!-- kp and kd for rubber -->
+		<kd>100.0</kd>
+		<mu1>1.0</mu1>
+		<mu2>1.0</mu2>
+		<maxVel>1.0</maxVel>
+		<minDepth>0.00</minDepth>
+	</gazebo>
+
+	<gazebo reference="left_wheel_back">
+		<material>Gazebo/Black</material>
+		<kp>1000000.0</kp> <!-- kp and kd for rubber -->
+		<kd>100.0</kd>
+		<mu1>1.0</mu1>
+		<mu2>1.0</mu2>
+		<maxVel>1.0</maxVel>
+		<minDepth>0.00</minDepth>
+	</gazebo>
+
+	<gazebo reference="right_wheel_front">
+		<material>Gazebo/Black</material>
+		<kp>1000000.0</kp> <!-- kp and kd for rubber -->
+		<kd>100.0</kd>
+		<mu1>1.0</mu1>
+		<mu2>1.0</mu2>
+		<maxVel>1.0</maxVel>
+		<minDepth>0.00</minDepth>
+	</gazebo>
+	<gazebo reference="right_wheel_back">
+		<material>Gazebo/Black</material>
+		<kp>1000000.0</kp> <!-- kp and kd for rubber -->
+		<kd>100.0</kd>
+		<mu1>1.0</mu1>
+		<mu2>1.0</mu2>
+		<maxVel>1.0</maxVel>
+		<minDepth>0.00</minDepth>
+	</gazebo>
+	<!--<gazebo reference="right_wheel">
+		<material>Gazebo/Green</material>
+	</gazebo>-->
+
+	<gazebo reference="camera">
+		<material>Gazebo/Red</material>
+	</gazebo>
+
+	<gazebo reference="base_link">
+		<material>Gazebo/Grey</material>
+	</gazebo>
+
+	<!-- Motor, Camera and Lidar Simulation -->
+	<xacro:include filename="$(find rover_autonav)/urdf/rosbob_v3.gazebo" />
+
+</robot>

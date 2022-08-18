@@ -1,0 +1,293 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- This URDF was automatically created by SolidWorks to URDF Exporter! Originally created by Stephen Brawner (brawner@gmail.com) 
+     Commit Version: 1.6.0-1-g15f4949  Build Version: 1.6.7594.29634
+     For more information, please see http://wiki.ros.org/sw_urdf_exporter -->
+<robot
+  name="rover_autonav">
+  <link
+    name="base_link">
+    <inertial>
+      <origin
+        xyz="-2.2204E-16 3.8858E-16 -0.10299"
+        rpy="0 0 0" />
+      <mass
+        value="67.568" />
+      <inertia
+        ixx="1.2576"
+        ixy="-8.9345E-15"
+        ixz="1.1652E-14"
+        iyy="3.7875"
+        iyz="-2.6748E-15"
+        izz="4.548" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://rover_autonav/meshes/base_link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.79216 0.81961 0.93333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://rover_autonav/meshes/base_link.STL" />
+      </geometry>
+    </collision>
+  </link>
+
+<!-- Create a dummy link as base link -->
+ <link name="dummy">
+	</link> 
+ <joint name="dummy_joint" type="fixed">
+    <parent link="dummy"/>
+    <child link="base_link"/>
+  </joint>
+
+  <link
+    name="lbacklink">
+    <inertial>
+      <origin
+        xyz="-7.27733231620231E-07 0.05842 1.62491302746481E-06"
+        rpy="0 0 0" />
+      <mass
+        value="5.6739801254924" />
+      <inertia
+        ixx="0.0284379209888981"
+        ixy="-5.75264381966658E-17"
+        ixz="-3.92244964079017E-09"
+        iyy="0.0446580879636162"
+        iyz="5.59109627307512E-17"
+        izz="0.0284379279903993" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://rover_autonav/meshes/lbacklink.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.792156862745098 0.819607843137255 0.933333333333333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://rover_autonav/meshes/lbacklink.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <gazebo reference="lbacklink">
+    <material>Gazebo/Black</material>
+  </gazebo>
+  <joint
+    name="backleft"
+    type="continuous">
+    <origin
+      xyz="-0.38078 -0.35179 -0.31801"
+      rpy="0 0 0" />
+    <parent
+      link="base_link" />
+    <child
+      link="lbacklink" />
+    <axis
+      xyz="0 1 0" />
+    <limit
+      effort="1000000"
+      velocity="1000000" />
+  </joint>
+  <link
+    name="rbacklink">
+    <inertial>
+      <origin
+        xyz="5.02792962708831E-07 -0.05842 -1.70796289178377E-06"
+        rpy="0 0 0" />
+      <mass
+        value="5.6739801254924" />
+      <inertia
+        ixx="0.0284379200707492"
+        ixy="-5.63682702496539E-17"
+        ixz="-2.84854228166472E-09"
+        iyy="0.0446580879636162"
+        iyz="5.62895689764963E-17"
+        izz="0.0284379289085482" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://rover_autonav/meshes/rbacklink.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.792156862745098 0.819607843137255 0.933333333333333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://rover_autonav/meshes/rbacklink.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <gazebo reference="rbacklink">
+    <material>Gazebo/Black</material>
+  </gazebo>
+  <joint
+    name="backright"
+    type="continuous">
+    <origin
+      xyz="-0.38115 0.35179 -0.31701"
+      rpy="0 0 0" />
+    <parent
+      link="base_link" />
+    <child
+      link="rbacklink" />
+    <axis
+      xyz="0 1 0" />
+    <limit
+      effort="1000000"
+      velocity="1000000" />
+  </joint>
+  <link
+    name="lfrontlink">
+    <inertial>
+      <origin
+        xyz="7.29369893370801E-08 0.05842 1.77893737907109E-06"
+        rpy="0 0 0" />
+      <mass
+        value="5.6739801254924" />
+      <inertia
+        ixx="0.0284379192498368"
+        ixy="-5.69933931600498E-17"
+        ixz="4.30391359396819E-10"
+        iyy="0.0446580879636162"
+        iyz="5.89209747200998E-17"
+        izz="0.0284379297294607" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://rover_autonav/meshes/lfrontlink.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.792156862745098 0.819607843137255 0.933333333333333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://rover_autonav/meshes/lfrontlink.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <gazebo reference="lfrontlink">
+    <material>Gazebo/Grey</material>
+  </gazebo>
+  <joint
+    name="frontleft"
+    type="continuous">
+    <origin
+      xyz="0.38098 -0.35179 -0.31805"
+      rpy="0 0 0" />
+    <parent
+      link="base_link" />
+    <child
+      link="lfrontlink" />
+    <axis
+      xyz="0 1 0" />
+    <limit
+      effort="1000000"
+      velocity="1000000" />
+  </joint>
+  <link
+    name="rfrontlink">
+    <inertial>
+      <origin
+        xyz="-1.66413693092338E-06 -0.0584199999999999 -6.32918855159037E-07"
+        rpy="0 0 0" />
+      <mass
+        value="5.6739801254924" />
+      <inertia
+        ixx="0.0284379284183329"
+        ixy="-5.64546623366554E-17"
+        ixz="3.49375254610767E-09"
+        iyy="0.0446580879636162"
+        iyz="5.51053175905783E-17"
+        izz="0.0284379205609646" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://rover_autonav/meshes/rfrontlink.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.792156862745098 0.819607843137255 0.933333333333333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://rover_autonav/meshes/rfrontlink.STL" />
+      </geometry>
+    </collision>
+  </link>
+ <gazebo reference="rfrontlink">
+    <material>Gazebo/Grey</material>
+  </gazebo>
+  <joint
+    name="frontright"
+    type="continuous">
+    <origin
+      xyz="0.3815 0.35179 -0.31733"
+      rpy="0 0 0" />
+    <parent
+      link="base_link" />
+    <child
+      link="rfrontlink" />
+    <axis
+      xyz="0 1 0" />
+    <limit
+      effort="1000000"
+      velocity="1000000" />
+  </joint>
+
+</robot>

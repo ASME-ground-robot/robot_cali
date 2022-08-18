@@ -1,0 +1,39 @@
+<launch>
+<!-- Define arguments -->
+  <arg name="world" 		default="empty"/> 
+  <arg name="paused" 		default="false"/>
+  <arg name="use_sim_time" 	default="true"/>
+  <arg name="gui" 		default="true"/>
+  <arg name="headless" 		default="false"/>
+  <arg name="debug" 		default="false"/>
+
+  <!-- Load the world environment -->
+  <include file="$(find gazebo_ros)/launch/empty_world.launch">
+    <arg name="world_name" 		value="$(find rover_autonav)/world/Zero_gravity.world"/>
+    <arg name="paused" 			value="$(arg paused)"/>
+    <arg name="use_sim_time"            value="$(arg use_sim_time)"/>
+    <arg name="gui" 			value="$(arg gui)"/>
+    <arg name="headless" 		value="$(arg headless)"/>
+    <arg name="debug" 			value="$(arg debug)"/>
+  </include>
+  
+  <!--Find my robot description-->
+  <param name="robot_description" command="cat $(find rover_autonav)/urdf/rover_autonav.urdf"/>
+
+  <node
+    name="tf_footprint_base"
+    pkg="tf"
+    type="static_transform_publisher"
+    args="0 0 0 0 0 0 base_link base_footprint 40" />
+  <node
+    name="spawn_model"
+    pkg="gazebo_ros"
+    type="spawn_model"
+    args="-file $(find rover_autonav)/urdf/rover_autonav.urdf -urdf -model rover_autonav"
+    output="screen" />
+  <node
+    name="fake_joint_calibration"
+    pkg="rostopic"
+    type="rostopic"
+    args="pub /calibrated std_msgs/Bool true" />
+</launch>

@@ -1,0 +1,24 @@
+joint_state_controller:
+    type: joint_state_controller/JointStateController
+    publish_rate: 50  
+
+    extra_joints:
+     - name: right_wheel_hinge_back
+       position: 0.01
+       velocity: 0.0
+       effort: 0.0
+
+     - name: right_wheel_hinge_front
+       position: 0.01
+       velocity: 0.0
+       effort: 0.0
+
+     - name: left_wheel_hinge_back
+       position: 0.01
+       velocity: 0.0
+       effort: 0.0
+
+     - name: left_wheel_hinge_front
+       position: 0.01
+       velocity: 0.0
+       effort: 0.0

@@ -1,0 +1,32 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://ros.org/wiki/xacro"
+       name="ur3e" >
+
+  <!-- common stuff -->
+  <!-- <xacro:include filename="$(find ur_e_description)/urdf/rosbob.gazebo" /> -->
+
+  <!-- MOBILE ROBOT -->
+  <xacro:include filename="$(find rover_autonav)/urdf/rosbob_v2.xacro" />
+
+
+
+  <!-- ARM -->
+  <xacro:include filename="$(find manipulation)/scorbot_description/urdf/scorbot.xacro" />
+
+
+
+<!-- 
+  <link name="world" />
+
+  <joint name="world_joint" type="fixed">
+    <parent link="world" />
+    <child link = "base_link" />
+    <origin xyz="5.3 -3.5 0.92" rpy="0.0 0.0 -1.57" />
+  </joint> -->
+
+  <!-- Here we create the Xacro macro to attach the Gripper to the ee_link-->
+    
+  <xacro:scorbot prefix="scorbot" parent="arm_link">
+      <origin xyz="0.0 0 0.43" rpy="0 0 0" />
+  </xacro:scorbot>
+</robot>

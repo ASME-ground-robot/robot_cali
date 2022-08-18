@@ -1,0 +1,262 @@
+<robot name="scorbot_urdf">
+  <!-- Used for fixing robot to Gazebo 'base_link' -->
+  <link name="world"/>
+
+  <joint name="fixed" type="fixed">
+    <parent link="world"/>
+    <child link="base_link"/>
+  </joint>
+<link name="base_link">
+<inertial>
+      <origin
+        xyz="0.13275 0.14932 0.15353"
+        rpy="0 0 0" />
+      <mass
+        value="13.939" />
+      <inertia
+        ixx="0.10125"
+        ixy="-0.00021844"
+        ixz="-0.00033793"
+        iyy="0.087972"
+        iyz="0.0034335"
+        izz="0.095961" />
+    </inertial>
+<visual>
+  <geometry>
+    <mesh filename="package://manipulation/scorbot_description/meshes/visual/Parte_1(1).DAE"/>
+  </geometry>
+</visual>
+ <collision>
+     <origin xyz="0 0 0" rpy="0 0 0"/>
+     <geometry>
+       <mesh filename="package://manipulation/scorbot_description/meshes/visual/Parte_1(1).DAE"/>
+     </geometry>
+   </collision> 
+</link>
+
+<link name="link_1">
+<inertial>
+      <origin
+        xyz="0.13275 0.14932 0.15353"
+        rpy="0 0 0" />
+      <mass
+        value="13.939" />
+      <inertia
+        ixx="0.10125"
+        ixy="-0.00021844"
+        ixz="-0.00033793"
+        iyy="0.087972"
+        iyz="0.0034335"
+        izz="0.095961" />
+    </inertial>
+<visual>
+  <geometry>
+    <mesh filename="package://manipulation/scorbot_description/meshes/visual/Parte_2(1)x.DAE"/>
+  </geometry>
+</visual> 
+<collision>
+     <origin xyz="0 0 0" rpy="0 0 0"/>
+     <geometry>
+       <mesh filename="package://manipulation/scorbot_description/meshes/visual/Parte_2(1)x.DAE"/>
+     </geometry>
+   </collision>
+</link>
+
+<joint name="joint_1" type="revolute">
+<parent link="base_link"/>
+<child link="link_1"/>
+<origin xyz="0 0 0.2274" rpy="0 0 0"/>
+<axis xyz="0 0 1"/>
+<limit lower="-1.57" upper="1.57" effort="0" velocity="2"/>
+</joint>
+
+<link name="link_2">
+<inertial>
+      <origin
+        xyz="0.13275 0.14932 0.15353"
+        rpy="0 0 0" />
+      <mass
+        value="13.939" />
+      <inertia
+        ixx="0.10125"
+        ixy="-0.00021844"
+        ixz="-0.00033793"
+        iyy="0.087972"
+        iyz="0.0034335"
+        izz="0.095961" />
+    </inertial>
+<visual>
+  <geometry>
+    <mesh filename="package://manipulation/scorbot_description/meshes/visual/Parte_3(2)x.DAE"/>
+  </geometry>
+</visual> 
+<collision>
+     <origin xyz="0 0 0" rpy="0 0 0"/>
+     <geometry>
+       <mesh filename="package://manipulation/scorbot_description/meshes/visual/Parte_3(2)x.DAE"/>
+     </geometry>
+   </collision>
+</link>
+
+<joint name="joint_2" type="revolute">
+<parent link="link_1"/>
+<child link="link_2"/>
+<origin xyz="0.0255 0 0.13" rpy="-1.570796327 -1.570796327 0"/>
+<axis xyz="0 0 1"/>
+<limit lower="-1.57" upper="1.57" effort="0" velocity="0.5"/>
+</joint>
+
+<link name="link_3">
+<inertial>
+      <origin
+        xyz="0.13275 0.14932 0.15353"
+        rpy="0 0 0" />
+      <mass
+        value="13.939" />
+      <inertia
+        ixx="0.10125"
+        ixy="-0.00021844"
+        ixz="-0.00033793"
+        iyy="0.087972"
+        iyz="0.0034335"
+        izz="0.095961" />
+    </inertial>
+<visual>
+  <geometry>
+    <mesh filename="package://manipulation/scorbot_description/meshes/visual/Parte_4x.DAE"/>
+  </geometry>
+</visual> 
+<collision>
+     <origin xyz="0 0 0" rpy="0 0 0"/>
+     <geometry>
+      <mesh filename="package://manipulation/scorbot_description/meshes/visual/Parte_4x.DAE"/>
+     </geometry>
+   </collision>
+</link>
+
+<joint name="joint_3" type="revolute">
+<parent link="link_2"/>
+<child link="link_3"/>
+<origin xyz="0.2225 0 0" rpy="0 0 0"/>
+<axis xyz="0 0 1"/>
+<limit lower="-1.57" upper="1.57" effort="0" velocity="0.5"/>
+</joint>
+
+
+<link name="link_4">
+<inertial>
+      <origin
+        xyz="0.13275 0.14932 0.15353"
+        rpy="0 0 0" />
+      <mass
+        value="13.939" />
+      <inertia
+        ixx="0.10125"
+        ixy="-0.00021844"
+        ixz="-0.00033793"
+        iyy="0.087972"
+        iyz="0.0034335"
+        izz="0.095961" />
+    </inertial>
+<visual>
+<origin rpy="0 0 0" xyz="0.012 0 0"/>
+  <geometry>
+    <mesh filename="package://manipulation/scorbot_description/meshes/visual/Parte_6x.DAE"/>
+  </geometry>
+</visual> 
+<collision>
+     <origin xyz="0 0 0" rpy="0 0 0"/>
+     <geometry>
+      <mesh filename="package://manipulation/scorbot_description/meshes/visual/Parte_6x.DAE"/>
+     </geometry>
+   </collision>
+</link>
+
+<joint name="joint_4" type="revolute">
+<parent link="link_3"/>
+<child link="link_4"/>
+<origin xyz="0.2225 0 0" rpy="0 0 0"/>
+<axis xyz="0 0 1"/>
+<limit lower="-1.57" upper="1.57" effort="0" velocity="0.5"/>
+</joint>
+
+
+<link name="link_5">
+<inertial>
+      <origin
+        xyz="0.13275 0.14932 0.15353"
+        rpy="0 0 0" />
+      <mass
+        value="13.939" />
+      <inertia
+        ixx="0.10125"
+        ixy="-0.00021844"
+        ixz="-0.00033793"
+        iyy="0.087972"
+        iyz="0.0034335"
+        izz="0.095961" />
+    </inertial>
+<visual>
+  <geometry>
+    <mesh filename="package://manipulation/scorbot_description/meshes/visual/Parte_5xb.DAE"/>
+  </geometry>
+</visual> 
+<collision>
+     <origin xyz="0 0 0" rpy="0 0 0"/>
+     <geometry>
+      <mesh filename="package://manipulation/scorbot_description/meshes/visual/Parte_5xb.DAE"/>
+     </geometry>
+   </collision>
+</link>
+
+<joint name="joint_5" type="revolute">
+<parent link="link_4"/>
+<child link="link_5"/>
+<origin xyz="0 0 0" rpy="0 1.570796327 0"/>
+<axis xyz="0 0 1"/>
+<limit lower="-1.57" upper="1.57" effort="0" velocity="0.5"/>
+</joint>
+
+
+
+<link name="link_6">
+<inertial>
+      <origin
+        xyz="0.2 0.2 0.2"
+        rpy="0 0 0" />
+      <mass
+        value="13.939" />
+      <inertia
+        ixx="0.12"
+        ixy="-0.00023"
+        ixz="-0.00035"
+        iyy="0.0872"
+        iyz="0.0037"
+        izz="0.098" />
+    </inertial>
+
+<visual>
+  <origin xyz="-0.15 0 0" rpy="0 0 1"/>
+  <geometry>
+	<cylinder radius=".002" length="0.003"/>
+  </geometry>
+</visual> 
+<collision>
+     <origin xyz="0 0 0" rpy="0 0 0"/>
+     <geometry>
+ 	<cylinder radius=".002" length="0.003"/>
+     </geometry>
+   </collision>
+</link>
+
+<joint name="joint_6" type="revolute">
+<parent link="link_5"/>
+<child link="link_6"/>
+<origin xyz="0 0 0" rpy="0 1.570796327 0"/>
+<axis xyz="1 0 0"/>
+<limit lower="-1.57" upper="1.57" effort="0" velocity="0.5"/>
+</joint>
+
+
+
+</robot>

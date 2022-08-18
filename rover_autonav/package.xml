@@ -1,0 +1,42 @@
+<package format="2">
+  <name>rover_autonav</name>
+  <version>1.0.0</version>
+  <description>
+    <p>URDF Description package for rover_autonav</p>
+    <p>This package contains configuration data, 3D models and launch files
+for rover_autonav robot</p>
+  </description>
+  <author>Carlito Ferrer</author>
+  <maintainer email="cr.ferrerjr@gmail.com" />
+  <license>BSD</license>
+  <buildtool_depend>catkin</buildtool_depend>
+  <buildtool_depend>gazebo_ros</buildtool_depend>
+
+  <depend>roslaunch</depend>
+  <depend>robot_state_publisher</depend>
+  <depend>rviz</depend>
+  <depend>joint_state_publisher_gui</depend>
+  <depend>gazebo</depend>
+  <build_depend>gazebo_ros</build_depend>
+  <build_depend>gazebo_ros_control</build_depend>
+
+
+  <build_depend>gazebo_ros</build_depend>
+  <build_depend>gazebo_ros_control</build_depend>
+  <build_depend>roscpp</build_depend>
+  <build_depend>rospy</build_depend>
+  <build_depend>nav_msgs</build_depend>
+  <build_depend>visualization_msgs</build_depend>
+
+  <exec_depend>gazebo_ros</exec_depend>
+  <build_depend>gazebo_ros_control</build_depend>
+  <exec_depend>roscpp</exec_depend>
+  <exec_depend>rospy</exec_depend>
+  <exec_depend>nav_msgs</exec_depend>
+  <exec_depend>visualization_msgs</exec_depend>
+  
+  <export>
+    <architecture_independent />
+     <gazebo_ros plugin_path="${prefix}/lib" gazebo_media_path="${prefix}"/>
+  </export>
+</package>

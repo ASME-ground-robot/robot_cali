@@ -1,0 +1,279 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- This URDF was automatically created by SolidWorks to URDF Exporter! Originally created by Stephen Brawner (brawner@gmail.com) 
+     Commit Version: 1.6.0-1-g15f4949  Build Version: 1.6.7594.29634
+     For more information, please see http://wiki.ros.org/sw_urdf_exporter -->
+<robot
+  name="rover_autonav">
+  <link
+    name="base_link">
+    <inertial>
+      <origin
+        xyz="0.00163442156307287 2.6929049464237E-05 -0.000219191845176014"
+        rpy="0 0 0" />
+      <mass
+        value="29.6833675113047" />
+      <inertia
+        ixx="0.236115657538214"
+        ixy="0.000628069802264764"
+        ixz="-0.000444859381534874"
+        iyy="0.425505894473617"
+        iyz="0.000163321625319867"
+        izz="0.395288052710963" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://rover_autonav/meshes_v2/base_link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.752941176470588 0.752941176470588 0.752941176470588 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://rover_autonav/meshes_v2/base_link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <link
+    name="FL_link">
+    <inertial>
+      <origin
+        xyz="0.346573352290969 0.384028107926246 -0.257899763189574"
+        rpy="0 0 0" />
+      <mass
+        value="8.57110385658357" />
+      <inertia
+        ixx="0.0642951423876811"
+        ixy="-2.26307155178873E-16"
+        ixz="8.98944025057926E-18"
+        iyy="0.107218659677985"
+        iyz="5.94038940268515E-17"
+        izz="0.0642951423876811" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://rover_autonav/meshes_v2/FL_link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="1 1 1 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://rover_autonav/meshes_v2/FL_link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="FL_joint"
+    type="continuous">
+    <origin
+      xyz="0 0 0"
+      rpy="0 0 0" />
+    <parent
+      link="base_link" />
+    <child
+      link="FL_link" />
+    <axis
+      xyz="0 -1 0" />
+    <limit
+      lower="0"
+      upper="0"
+      effort="100000"
+      velocity="100000" />
+  </joint>
+  <link
+    name="FR_link">
+    <inertial>
+      <origin
+        xyz="0.346472064924509 -0.374439130167286 -0.257864436466565"
+        rpy="0 0 0" />
+      <mass
+        value="8.57110385658357" />
+      <inertia
+        ixx="0.0642951423876811"
+        ixy="2.16406288653006E-16"
+        ixz="-5.67087630181899E-20"
+        iyy="0.107218659677985"
+        iyz="-5.95127393102304E-17"
+        izz="0.0642951423876811" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://rover_autonav/meshes_v2/FR_link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="1 1 1 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://rover_autonav/meshes_v2/FR_link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="FR_joint"
+    type="continuous">
+    <origin
+      xyz="0 0 0"
+      rpy="0 0 0" />
+    <parent
+      link="base_link" />
+    <child
+      link="FR_link" />
+    <axis
+      xyz="0 -1 0" />
+    <limit
+      lower="0"
+      upper="0"
+      effort="100000"
+      velocity="100000" />
+  </joint>
+  <link
+    name="RL_link">
+    <inertial>
+      <origin
+        xyz="-0.380580629485825 0.384028107926246 -0.257864436466565"
+        rpy="0 0 0" />
+      <mass
+        value="8.57110385658357" />
+      <inertia
+        ixx="0.0642951423876811"
+        ixy="2.15142679955087E-16"
+        ixz="-9.13947501088827E-18"
+        iyy="0.107218659677985"
+        iyz="6.04220861063529E-17"
+        izz="0.0642951423876811" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://rover_autonav/meshes_v2/RL_link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="1 1 1 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://rover_autonav/meshes_v2/RL_link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="RL_joint"
+    type="continuous">
+    <origin
+      xyz="0 0 0"
+      rpy="0 0 0" />
+    <parent
+      link="base_link" />
+    <child
+      link="RL_link" />
+    <axis
+      xyz="0 -1 0" />
+    <limit
+      lower="0"
+      upper="0"
+      effort="100000"
+      velocity="100000" />
+  </joint>
+  <link
+    name="RR_link">
+    <inertial>
+      <origin
+        xyz="-0.380681916852288 -0.374439130167286 -0.257899763189574"
+        rpy="0 0 0" />
+      <mass
+        value="8.57110385658357" />
+      <inertia
+        ixx="0.0642951423876811"
+        ixy="-2.2966793291196E-16"
+        ixz="4.54226952216942E-19"
+        iyy="0.107218659677985"
+        iyz="-5.54937673293526E-17"
+        izz="0.0642951423876811" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://rover_autonav/meshes_v2/RR_link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="1 1 1 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://rover_autonav/meshes_v2/RR_link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="RR_joint"
+    type="continuous">
+    <origin
+      xyz="0 0 0"
+      rpy="0 0 0" />
+    <parent
+      link="base_link" />
+    <child
+      link="RR_link" />
+    <axis
+      xyz="0 -1 0" />
+    <limit
+      lower="0"
+      upper="0"
+      effort="100000"
+      velocity="100000" />
+  </joint>
+</robot>

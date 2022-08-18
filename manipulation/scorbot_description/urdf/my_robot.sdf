@@ -1,0 +1,311 @@
+<sdf version='1.4'>
+  <model name='my_robot'>
+    <link name='base_link'>
+      <pose>0 0 0 0 -0 0</pose>
+      <inertial>
+        <pose>0.13275 0.14932 0.15353 0 -0 0</pose>
+        <mass>13.939</mass>
+        <inertia>
+          <ixx>0.10125</ixx>
+          <ixy>-0.00021844</ixy>
+          <ixz>-0.00033793</ixz>
+          <iyy>0.087972</iyy>
+          <iyz>0.0034335</iyz>
+          <izz>0.095961</izz>
+        </inertia>
+      </inertial>
+      <collision name='base_link_collision'>
+        <pose>0 0 0 0 -0 0</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>model://lesson_urdf/meshes/visual/Parte_1(1).DAE</uri>
+          </mesh>
+        </geometry>
+      </collision>
+      <visual name='base_link_visual'>
+        <pose>0 0 0 0 -0 0</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>model://lesson_urdf/meshes/visual/Parte_1(1).DAE</uri>
+          </mesh>
+        </geometry>
+      </visual>
+      <velocity_decay>
+        <linear>0</linear>
+        <angular>0</angular>
+      </velocity_decay>
+    </link>
+    <joint name='fixed' type='revolute'>
+      <child>base_link</child>
+      <parent>world</parent>
+      <axis>
+        <limit>
+          <lower>0</lower>
+          <upper>0</upper>
+        </limit>
+        <dynamics>
+          <damping>0</damping>
+        </dynamics>
+        <xyz>0 0 1</xyz>
+      </axis>
+    </joint>
+    <link name='link_1'>
+      <pose>0 0 0.2274 0 -0 0</pose>
+      <inertial>
+        <pose>0.13275 0.14932 0.15353 0 -0 0</pose>
+        <mass>13.939</mass>
+        <inertia>
+          <ixx>0.10125</ixx>
+          <ixy>-0.00021844</ixy>
+          <ixz>-0.00033793</ixz>
+          <iyy>0.087972</iyy>
+          <iyz>0.0034335</iyz>
+          <izz>0.095961</izz>
+        </inertia>
+      </inertial>
+      <collision name='link_1_collision'>
+        <pose>0 0 0 0 -0 0</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>model://lesson_urdf/meshes/visual/Parte_2(1)x.DAE</uri>
+          </mesh>
+        </geometry>
+      </collision>
+      <visual name='link_1_visual'>
+        <pose>0 0 0 0 -0 0</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>model://lesson_urdf/meshes/visual/Parte_2(1)x.DAE</uri>
+          </mesh>
+        </geometry>
+      </visual>
+      <velocity_decay>
+        <linear>0</linear>
+        <angular>0</angular>
+      </velocity_decay>
+    </link>
+    <joint name='joint_1' type='revolute'>
+      <child>link_1</child>
+      <parent>base_link</parent>
+      <axis>
+        <xyz>0 0 1</xyz>
+        <limit>
+          <lower>-1.57</lower>
+          <upper>1.57</upper>
+          <effort>0</effort>
+          <velocity>0.5</velocity>
+        </limit>
+        <dynamics/>
+      </axis>
+    </joint>
+    <link name='link_2'>
+      <pose>0.0255 0 0.3574 -1.57079 -1.57079 -2.65355e-06</pose>
+      <inertial>
+        <pose>0.13275 0.14932 0.15353 0 -0 0</pose>
+        <mass>13.939</mass>
+        <inertia>
+          <ixx>0.10125</ixx>
+          <ixy>-0.00021844</ixy>
+          <ixz>-0.00033793</ixz>
+          <iyy>0.087972</iyy>
+          <iyz>0.0034335</iyz>
+          <izz>0.095961</izz>
+        </inertia>
+      </inertial>
+      <collision name='link_2_collision'>
+        <pose>0 0 0 0 -0 0</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>model://lesson_urdf/meshes/visual/Parte_3(2)x.DAE</uri>
+          </mesh>
+        </geometry>
+      </collision>
+      <visual name='link_2_visual'>
+        <pose>0 0 0 0 -0 0</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>model://lesson_urdf/meshes/visual/Parte_3(2)x.DAE</uri>
+          </mesh>
+        </geometry>
+      </visual>
+      <velocity_decay>
+        <linear>0</linear>
+        <angular>0</angular>
+      </velocity_decay>
+    </link>
+    <joint name='joint_2' type='revolute'>
+      <child>link_2</child>
+      <parent>link_1</parent>
+      <axis>
+        <xyz>2.05104e-10 1 -5.55112e-17</xyz>
+        <limit>
+          <lower>-1.57</lower>
+          <upper>1.57</upper>
+          <effort>0</effort>
+          <velocity>0.5</velocity>
+        </limit>
+        <dynamics/>
+      </axis>
+    </joint>
+    <link name='link_3'>
+      <pose>0.0255 1.38778e-17 0.5799 -1.57079 -1.57079 -2.65355e-06</pose>
+      <inertial>
+        <pose>0.13275 0.14932 0.15353 0 -0 0</pose>
+        <mass>13.939</mass>
+        <inertia>
+          <ixx>0.10125</ixx>
+          <ixy>-0.00021844</ixy>
+          <ixz>-0.00033793</ixz>
+          <iyy>0.087972</iyy>
+          <iyz>0.0034335</iyz>
+          <izz>0.095961</izz>
+        </inertia>
+      </inertial>
+      <collision name='link_3_collision'>
+        <pose>0 0 0 0 -0 0</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>model://lesson_urdf/meshes/visual/Parte_4x.DAE</uri>
+          </mesh>
+        </geometry>
+      </collision>
+      <visual name='link_3_visual'>
+        <pose>0 0 0 0 -0 0</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>model://lesson_urdf/meshes/visual/Parte_4x.DAE</uri>
+          </mesh>
+        </geometry>
+      </visual>
+      <velocity_decay>
+        <linear>0</linear>
+        <angular>0</angular>
+      </velocity_decay>
+    </link>
+    <joint name='joint_3' type='revolute'>
+      <child>link_3</child>
+      <parent>link_2</parent>
+      <axis>
+        <xyz>2.05104e-10 1 -5.55112e-17</xyz>
+        <limit>
+          <lower>-1.57</lower>
+          <upper>1.57</upper>
+          <effort>0</effort>
+          <velocity>0.5</velocity>
+        </limit>
+        <dynamics/>
+      </axis>
+    </joint>
+    <link name='link_4'>
+      <pose>0.0255 2.77556e-17 0.8024 -1.57079 -1.57079 -2.65355e-06</pose>
+      <inertial>
+        <pose>0.13275 0.14932 0.15353 0 -0 0</pose>
+        <mass>13.939</mass>
+        <inertia>
+          <ixx>0.10125</ixx>
+          <ixy>-0.00021844</ixy>
+          <ixz>-0.00033793</ixz>
+          <iyy>0.087972</iyy>
+          <iyz>0.0034335</iyz>
+          <izz>0.095961</izz>
+        </inertia>
+      </inertial>
+      <collision name='link_4_collision'>
+        <pose>0 0 0 0 -0 0</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>model://lesson_urdf/meshes/visual/Parte_6x.DAE</uri>
+          </mesh>
+        </geometry>
+      </collision>
+      <visual name='link_4_visual'>
+        <pose>0.012 0 0 0 -0 0</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>model://lesson_urdf/meshes/visual/Parte_6x.DAE</uri>
+          </mesh>
+        </geometry>
+      </visual>
+      <velocity_decay>
+        <linear>0</linear>
+        <angular>0</angular>
+      </velocity_decay>
+    </link>
+    <joint name='joint_4' type='revolute'>
+      <child>link_4</child>
+      <parent>link_3</parent>
+      <axis>
+        <xyz>2.05104e-10 1 -5.55112e-17</xyz>
+        <limit>
+          <lower>-1.57</lower>
+          <upper>1.57</upper>
+          <effort>0</effort>
+          <velocity>0.5</velocity>
+        </limit>
+        <dynamics/>
+      </axis>
+    </joint>
+    <link name='link_5'>
+      <pose>0.0255 2.77556e-17 0.8024 2.05104e-10 2.05104e-10 -1.5708</pose>
+      <inertial>
+        <pose>0.13275 0.14932 0.15353 0 -0 0</pose>
+        <mass>13.939</mass>
+        <inertia>
+          <ixx>0.10125</ixx>
+          <ixy>-0.00021844</ixy>
+          <ixz>-0.00033793</ixz>
+          <iyy>0.087972</iyy>
+          <iyz>0.0034335</iyz>
+          <izz>0.095961</izz>
+        </inertia>
+      </inertial>
+      <collision name='link_5_collision'>
+        <pose>0 0 0 0 -0 0</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>model://lesson_urdf/meshes/visual/Parte_5xb.DAE</uri>
+          </mesh>
+        </geometry>
+      </collision>
+      <visual name='link_5_visual'>
+        <pose>0 0 0 0 -0 0</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>model://lesson_urdf/meshes/visual/Parte_5xb.DAE</uri>
+          </mesh>
+        </geometry>
+      </visual>
+      <velocity_decay>
+        <linear>0</linear>
+        <angular>0</angular>
+      </velocity_decay>
+    </link>
+    <joint name='joint_5' type='revolute'>
+      <child>link_5</child>
+      <parent>link_4</parent>
+      <axis>
+        <xyz>-2.05104e-10 -2.05104e-10 1</xyz>
+        <limit>
+          <lower>-1.57</lower>
+          <upper>1.57</upper>
+          <effort>0</effort>
+          <velocity>0.5</velocity>
+        </limit>
+        <dynamics/>
+      </axis>
+    </joint>
+  </model>
+</sdf>
+

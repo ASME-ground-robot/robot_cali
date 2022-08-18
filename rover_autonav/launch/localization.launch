@@ -1,0 +1,23 @@
+<launch>
+
+  <include file="$(find rover_autonav)/launch/vis_marker.launch"/>
+
+  <arg name="map_file" default="$(find rover_autonav)/maps/Sandbox.yaml"/>
+  <node pkg="map_server" name="map_server" type="map_server" args="$(arg map_file)" output="screen"/>
+  <param name="frame_id" value="map"/>
+
+  <arg name="scan_topic" default="/scan" />
+  <arg name="base_frame_id" default="base_link"/>
+
+ <!--localization-->
+  <node pkg="amcl" name="amcl" type="amcl" output="screen">
+        <remap from="scan" to="$(arg scan_topic)"/>        
+        <param name="base_frame_id" value="$(arg base_frame_id)"/>
+        <param name="global_frame_id"  value="map"/>
+        <param name="odom_frame_id"    value="odom"/>
+        <param name="min_particles"     value="50"/>
+        <param name="max_particles"     value="1000"/>
+        <param name="use_map_topic"     value="true"/>
+  </node>
+
+</launch>

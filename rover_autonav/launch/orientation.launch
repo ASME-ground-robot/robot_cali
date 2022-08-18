@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<launch>
+
+	<!-- Start the simulation -->
+	<include file="$(find rover_autonav)/launch/nav_test.launch"/> 
+
+	<!-- Start the visualization node -->
+	<node name="rover_vis" pkg="rover_autonav" type="rover_vis" output="screen"/>
+
+</launch>

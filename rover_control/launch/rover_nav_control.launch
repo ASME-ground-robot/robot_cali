@@ -1,0 +1,24 @@
+<launch>
+
+  <!-- Load joint controller configurations from YAML file to parameter server -->
+
+  <rosparam command= "load" file="$(find rover_control)/config/rover_nav_control.yaml" />
+
+<!--Find my robot description-->
+<param name="robot_description" command="cat $(find rover_autonav)/urdf/rover_autonav.urdf"/>
+
+  <!-- load the controllers -->
+  <node name="controller_spawner" pkg="controller_manager" type="spawner" respawn="false"
+    output="screen" ns="/rover_nav" args="joint_state_controller
+                                     frontleft_controller
+                                     frontright_controller
+                                     backleft_controller
+                                     backright_controller"/>
+
+  <!-- convert joint states to TF transforms for rviz, etc -->
+  <node name="robot_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher"
+    respawn="false" output="screen">
+    <remap from="/joint_states" to="robot/joint_states" />
+  </node>
+
+</launch>

@@ -1,0 +1,42 @@
+<?xml version='1.0'?>
+
+<robot name="rosbob" xmlns:xacro="http://www.ros.org/wiki/xacro">
+	<xacro:property name="robot_name" value="rosbob" />
+
+	<xacro:property name="pi" value="3.141592654"/>
+	<xacro:property name="half_pi" value="1.570796327"/>
+	
+	<!-- Make Chassis of Bot -->
+	<!-- <link name="base_link"></link> -->
+
+	<!-- Project center to the ground -->
+	<!-- <link name="robot_footprint"></link> -->
+
+	<!-- Footprint joint-->
+	<!-- <joint name="robot_footprint_joint" type="fixed">
+		<origin xyz="0 0 0" rpy="0 0 0" />
+		<parent link="robot_footprint"/>
+		<child link="base_link" />
+	</joint> -->
+
+
+
+	<!-- JOIN ARM URDF !!!!!!!!!!!!!!!!!!-->
+<!-- 
+	<joint name="arm_fixed_joint" type="fixed">
+      <parent link="base_link" />
+      <child link = "arm_link" />
+      <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0" />
+    </joint> -->
+
+    <link name="arm_link">
+      <collision>
+        <geometry>
+          <box size="0.0001 0.0001 0.0001"/>
+        </geometry>
+        <origin rpy="0 0 0" xyz="0 0 0"/>
+      </collision>
+    </link>
+
+
+</robot>
