@@ -2,35 +2,12 @@
 <robot xmlns:xacro="http://ros.org/wiki/xacro"
        name="ur3e" >
 
-  <!-- common stuff -->
-  <!-- <xacro:include filename="$(find ur_e_description)/urdf/rosbob.gazebo" /> -->
-
-
-  <!-- MOBILE ROBOT -->
-
-  <!-- NO MESH FOR MOBILE ROBOT-->
-  <!-- <xacro:include filename="$(find rover_autonav)/urdf/rosbob_v2.xacro" /> -->
-  
-  <!-- MESH FOR MOBILE ROBOT-->
-  <xacro:include filename="$(find rover_autonav)/urdf/world.xacro" />
-
-
-
-
   <!-- ARM -->
   <xacro:include filename="$(find manipulation)/scorbot_description/urdf/scorbot_v3.xacro" />
 
 
-
-
   <!-- Here we create the Xacro macro to attach the Gripper to the arm_link-->
-  <xacro:scorbot prefix="scorbot" parent="arm_link">
-
-    <!-- NO MESH FOR MOBILE ROBOT--> 
-    <!-- <origin xyz="0.0 0 0.43" rpy="0 0 0" /> -->
-
-    <!-- MESH FOR MOBILE ROBOT-->
+  <xacro:scorbot prefix="scorbot" parent="world">
     <origin xyz="0.0 0 0.0" rpy="0 0 0" />
-
   </xacro:scorbot>
 </robot>
