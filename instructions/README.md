@@ -1,5 +1,9 @@
 # Instructions
 
+The software is based on ROS-Melodic on Ubuntu 18.04. 
+
+
+
 ## Launch Mobile Manipulator
 
 Open a new terminal 
