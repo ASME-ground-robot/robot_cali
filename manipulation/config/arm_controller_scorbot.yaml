@@ -3,9 +3,9 @@ scaled_pos_joint_traj_controller:
   joints:
     - scorbot_joint_1
     - scorbot_joint_2
-    # - scorbot_joint_3
-    # - scorbot_joint_4
-    # - scorbot_joint_5
+    - scorbot_joint_3
+    - scorbot_joint_4
+    - scorbot_joint_5
   constraints:
     goal_time: 0.6
     stopped_velocity_tolerance: 0.5

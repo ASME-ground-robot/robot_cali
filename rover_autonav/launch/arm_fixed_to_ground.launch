@@ -49,8 +49,8 @@
     <!-- <node name="arm_controller_spawner" pkg="controller_manager" type="controller_manager" args="spawn scaled_pos_joint_traj_controller" respawn="false" output="screen"/> -->
 
     <!--GRIPPER CONTROLLER-->
-    <!-- <rosparam file="$(find manipulation)/config/gripper_controller.yaml" command="load"/>
-    <param name="gripper_controller/joint" value="scorbot_pad1_joint"/> -->
+    <rosparam file="$(find manipulation)/config/gripper_controller.yaml" command="load"/>
+    <param name="gripper_controller/joint" value="scorbot_pad1_joint"/>
 
     <!-- <node name="gripper_controller_spawner" pkg="controller_manager" type="spawner" respawn="false" output="screen" args="gripper_controller"/> -->
 
@@ -58,11 +58,11 @@
     <!-- <rosparam file="$(find manipulation)/config/arm_pids.yaml" command="load" /> -->
 
     <!-- Launch PIDs for Gripper Controller-->
-    <!-- <rosparam file="$(find manipulation)/config/gazebo_controller.yaml" command="load" /> -->
+    <rosparam file="$(find manipulation)/config/gazebo_controller.yaml" command="load" />
 
     <!-- Controller Manager-->
     <node name="controller_spawner" pkg="controller_manager" type="spawner" output="screen" 
-    args="joint_state_controller scaled_pos_joint_traj_controller "/>
+    args="joint_state_controller scaled_pos_joint_traj_controller gripper_controller"/>
 
     <!-- args="joint_state_controller scaled_pos_joint_traj_controller gripper_controller"/> -->
 
@@ -73,7 +73,7 @@
     <include file="$(find gazebo_ros)/launch/empty_world.launch">
             <arg name="world_name" value="$(arg world_name)"/>
             <arg name="debug" value="$(arg debug)" />
-            <arg name="paused" value="true"/>
+            <arg name="paused" value="false"/>
             <arg name="use_sim_time" value="true"/>
             <arg name="headless" value="false"/>
             <arg name="verbose" value="true"/>
