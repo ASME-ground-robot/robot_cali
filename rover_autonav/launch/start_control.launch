@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+<launch>
+
+    <!-- Combine joint values -->
+    <node name="robot_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher" respawn= "false" output="screen">
+    </node>
+
+    <!-- JOINT STATE CONTROLLER -->
+    <rosparam file="$(find manipulation)/config/joint_state_controller_arm.yaml" command="load"/>
+
+    <!-- ARM CONTROLLER -->
+    <rosparam file="$(find manipulation)/config/arm_controller_scorbot.yaml" command="load"/>
+
+    <!-- Controller Manager-->
+    <node name="controller_spawner" pkg="controller_manager" type="spawner" output="screen" 
+    args="joint_state_controller scaled_pos_joint_traj_controller "/>
+
+    <!-- start trajectory controller GUI to control each joint separately -->
+    <node name="arm_control_gui" pkg="rqt_joint_trajectory_controller" type="rqt_joint_trajectory_controller" respawn="false" output="screen"/>
+
+
+</launch>
