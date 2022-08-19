@@ -61,7 +61,7 @@
   <xacro:macro name="scorbot" params="prefix parent *origin">
 
     <!-- WORLD LINK -> Used for fixing robot to Gazebo '${prefix}_base_link' -->
-    <!-- <link name="world"/> -->
+    <link name="world"/>
 
     <joint name="${prefix}_base_joint" type="fixed">
       <xacro:insert_block name="origin"/>

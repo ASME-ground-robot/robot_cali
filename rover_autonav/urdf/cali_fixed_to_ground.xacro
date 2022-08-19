@@ -3,7 +3,7 @@
        name="ur3e" >
 
   <!-- ARM -->
-  <xacro:include filename="$(find manipulation)/scorbot_description/urdf/scorbot_v3.xacro" />
+  <xacro:include filename="$(find manipulation)/scorbot_description/urdf/arm_fixed_to_ground.xacro" />
 
 
   <!-- Here we create the Xacro macro to attach the Gripper to the arm_link-->
