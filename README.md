@@ -126,14 +126,24 @@ save the end of your file as .world
   ### 4) Launch Autonomous Navigation node
   [Add description]
   ## Manipulation
-  [Add description]
-  ### 1) Create Moveit package
-  [Add description]
-  ### 2) Launch Manipulation node
+  First, we do some testings using <em><strong>rqt_joint_trajectory_controller</strong></em> to control the arm joints and also the <em><strong>/gripper_controller/gripper_cmd/goal</strong></em> topic to control the gripper.
+  
+  Then, we will perform manipulation using <strong>MoveIt</strong>.
+
+  ### 1) rqt_joint_trajectory_controller & <em>/gripper_controller/gripper_cmd/goal</em> topic
+  - <em><strong>rqt_joint_trajectory_controller</strong></em>
+
+  <img src="https://github.com/CSULA-URC/2021-22/blob/main/doc/rqt_joint_trajectory_controller.gif" width="600" />
+
+  -  <em><strong>/gripper_controller/gripper_cmd/goal</strong></em>
+
+  <img src="https://github.com/CSULA-URC/2021-22/blob/main/doc/open_close_gripper.gif" width="600" />
+
+
+
+  ### 2) MoveIt
   [Add description]
 
-  
-  ![Gazebo Model](https://github.com/CSULA-URC/2021-22/blob/main/doc/gazebo_model.png)
 
 
 
