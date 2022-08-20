@@ -173,6 +173,13 @@ Then with our <strong>surface_detection</strong> algorithm we can detect a surfa
 
 <img src="https://github.com/CSULA-URC/2021-22/blob/main/doc/surface_detection.png" width="600" />
 
+From the <strong>surface_detection</strong> we get the <em><strong>/surface_objects</strong></em> topic:
+
+```bash
+rostopic echo /surface_objects
+```
+<img src="https://github.com/CSULA-URC/2021-22/blob/main/doc/echo_surface_objects.png" width="600" />
+
 ## Mission Planner
 [Add description]
 [Add diagram]
