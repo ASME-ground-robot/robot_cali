@@ -155,9 +155,20 @@ save the end of your file as .world
 
 
 ## Perception
-[Add description].
+
+<img src="https://github.com/CSULA-URC/2021-22/blob/main/doc/perception.gif" width="600" />
+
 
 In order too sense Cali's surroundings, a 3-D camera is used to map the area around the rover. The specific type of 3-D camera used is the Intel Realsense d435. The data will then be used in ROS via a topic.
+
+As we can see from the GIF we first obtain the <strong>PointCloud</strong>:
+
+<img src="https://github.com/CSULA-URC/2021-22/blob/main/doc/perception_point_cloud.png" width="600" />
+
+
+Then with our <strong>surface_detection</strong> algorithm we can detect a surface and an object on top of that surface:
+
+<img src="https://github.com/CSULA-URC/2021-22/blob/main/doc/surface_detection.png" width="600" />
 
 ## Mission Planner
 [Add description]
