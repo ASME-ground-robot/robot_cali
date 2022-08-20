@@ -185,6 +185,15 @@ goal:
 
   ### 2) MoveIt
 
+  Close all previous terminals, then open a new terminal:
+  ```bash
+roslaunch rover_autonav gazebo_combined_v5.launch
+```
+  In a second terminal:
+  ```bash
+roslaunch cali_moveit_config cali_planning_execution.launch
+```
+
   - arm
 
   <img src="https://github.com/CSULA-URC/2021-22/blob/main/doc/moveit_arm.gif" width="600" />
@@ -198,10 +207,17 @@ goal:
 
 ## Perception
 
-<img src="https://github.com/CSULA-URC/2021-22/blob/main/doc/perception.gif" width="600" />
-
-
 In order too sense Cali's surroundings, a 3-D camera is used to map the area around the rover. The specific type of 3-D camera used is the Intel Realsense d435. The data will then be used in ROS via a topic.
+
+Before launching the perception pipeline the camera needs to be <strong>correctly oriented</strong>.
+Thus, we have created a perception pose in Moveit for that matter.
+
+In a third terminal:
+  ```bash
+roslaunch perception surface_detection_simple.launch
+```
+
+<img src="https://github.com/CSULA-URC/2021-22/blob/main/doc/perception.gif" width="600" />
 
 As we can see from the GIF we first obtain the <strong>PointCloud</strong>:
 
