@@ -124,18 +124,21 @@ save the end of your file as .world
   ### 3) Path Planning
   [Add description]
   ### 4) Launch Autonomous Navigation node
-  [Add description]
+
+  <img src="https://github.com/CSULA-URC/2021-22/blob/main/doc/autonomous_navigation.gif" width="600" />
+
+
   ## Manipulation
   First, we do some testings using <em><strong>rqt_joint_trajectory_controller</strong></em> to control the arm joints and also the <em><strong>/gripper_controller/gripper_cmd/goal</strong></em> topic to control the gripper.
   
-  Then, we will perform manipulation using <strong>MoveIt</strong>.
+  Then, we perform manipulation using <strong>MoveIt</strong>.
 
   ### 1) rqt_joint_trajectory_controller & <em>/gripper_controller/gripper_cmd/goal</em> topic
   - <em><strong>rqt_joint_trajectory_controller</strong></em>
 
   <img src="https://github.com/CSULA-URC/2021-22/blob/main/doc/rqt_joint_trajectory_controller.gif" width="600" />
 
-  -  <em><strong>/gripper_controller/gripper_cmd/goal</strong></em>
+  -  <em><strong>/gripper_controller/gripper_cmd/goal</strong></em> topic
 
   <img src="https://github.com/CSULA-URC/2021-22/blob/main/doc/open_close_gripper.gif" width="600" />
 
