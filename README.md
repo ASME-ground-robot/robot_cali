@@ -125,6 +125,13 @@ save the end of your file as .world
   [Add description]
   ### 4) Launch Autonomous Navigation node
 
+  Open a new terminal:
+  ```bash
+roslaunch rover_autonav navigation_v2.launch
+```
+
+Then in RViz we just need to select a goal pose using the <em><strong>2D Nav Goal</strong></em> tool:
+
   <img src="https://github.com/CSULA-URC/2021-22/blob/main/doc/autonomous_navigation.gif" width="600" />
 
 
@@ -136,9 +143,41 @@ save the end of your file as .world
   ### 1) rqt_joint_trajectory_controller & <em>/gripper_controller/gripper_cmd/goal</em> topic
   - <em><strong>rqt_joint_trajectory_controller</strong></em>
 
+  Open a new terminal:
+
+  ```bash
+  roslaunch rover_autonav arm_fixed_to_ground.launch 
+  ```
+
+  Now play with the <em><strong>rqt_joint_trajectory_controller</strong></em> GUI.
+  
   <img src="https://github.com/CSULA-URC/2021-22/blob/main/doc/rqt_joint_trajectory_controller.gif" width="600" />
 
   -  <em><strong>/gripper_controller/gripper_cmd/goal</strong></em> topic
+
+  Now open a second terminal:
+  ```bash
+  rostopic pub /gripper_controller/gripper_cmd/goal control_msgs/GripperCommandActionGoal "header:
+  seq: 0
+  stamp:
+    secs: 0
+    nsecs: 0
+  frame_id: ''
+goal_id:
+  stamp:
+    secs: 0
+    nsecs: 0
+  id: ''
+goal:
+  command:
+    position: 2.0
+    max_effort: 0.0"
+  ```
+
+  Set a position of <em>2.0</em> to open the gripper and <em>-2.0</em> to close it.
+  
+
+
 
   <img src="https://github.com/CSULA-URC/2021-22/blob/main/doc/open_close_gripper.gif" width="600" />
 
