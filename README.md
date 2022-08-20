@@ -178,7 +178,9 @@ From the <strong>surface_detection</strong> we get the <em><strong>/surface_obje
 ```bash
 rostopic echo /surface_objects
 ```
-<img src="https://github.com/CSULA-URC/2021-22/blob/main/doc/echo_surface_objects.png" width="600" />
+<img src="https://github.com/CSULA-URC/2021-22/blob/main/doc/echo_surface_objects.png" width="300" />
+
+This gives information about the objects detected such as the geometry, postion, orientation or even the color of the object.
 
 ## Mission Planner
 [Add description]
