@@ -207,7 +207,7 @@ roslaunch cali_moveit_config cali_planning_execution.launch
 
 ## Perception
 
-In order too sense Cali's surroundings, a 3-D camera is used to map the area around the rover. The specific type of 3-D camera used is the Intel Realsense d435. The data will then be used in ROS via a topic.
+In order too perceive Cali's surroundings, an Intel Realsense d435 3D camera is used and placed on top of the last link of the arm. The data will then be used in ROS via a topic.
 
 Before launching the perception pipeline the camera needs to be <strong>correctly oriented</strong>.
 Thus, we have created a perception pose in Moveit for that matter.
