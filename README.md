@@ -142,7 +142,14 @@ save the end of your file as .world
 
 
   ### 2) MoveIt
-  [Add description]
+
+  - arm
+
+  <img src="https://github.com/CSULA-URC/2021-22/blob/main/doc/moveit_arm.gif" width="600" />
+
+  - gripper
+
+  <img src="https://github.com/CSULA-URC/2021-22/blob/main/doc/moveit_gripper.gif" width="600" />
 
 
 
