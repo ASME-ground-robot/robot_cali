@@ -2,7 +2,6 @@
 # -*- coding: utf-8 -*-
 
 import rospy
-import numpy
 from visualization_msgs.msg import Marker
 from geometry_msgs.msg import Pose
 
