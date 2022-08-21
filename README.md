@@ -224,7 +224,7 @@ As we can see from the GIF we first obtain the <strong>PointCloud</strong>:
 <img src="https://github.com/CSULA-URC/2021-22/blob/main/doc/perception_point_cloud.png" width="600" />
 
 
-Then with our <strong>surface_detection</strong> algorithm we can detect a surface and an object on top of that surface:
+Then with our <strong>surface_detection</strong> algorithm we can detect a surface (purple marker) and an object (green marker) on top of that surface:
 
 <img src="https://github.com/CSULA-URC/2021-22/blob/main/doc/surface_detection.png" width="600" />
 
