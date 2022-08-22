@@ -185,7 +185,7 @@ goal:
 
   ### 2) MoveIt
 
-  Close all previous terminals, then open a new terminal:
+  Close all previous terminals, then open a <strong>new</strong> terminal:
   ```bash
 roslaunch rover_autonav gazebo_combined_v5.launch
 ```
@@ -200,16 +200,16 @@ roslaunch cali_moveit_config cali_planning_execution.launch
 
   - Gripper
 
-  <img src="https://github.com/ASME-ground-robot/2021-22/blob/main/doc/grasp_coke_can.gif" width="600" />
+  <img src="https://github.com/CSULA-URC/2021-22/blob/main/doc/moveit_gripper.gif" width="600" />
 
   - Grasp the coke can using joint commands
 
-  In a <strong>third</strong> terminal:
+In a <strong>third</strong> terminal:
   ```bash
 rosrun manipulation pick_place_joint_cmds.py
 ```
 
-  <img src="https://github.com/CSULA-URC/2021-22/blob/main/doc/moveit_gripper.gif" width="600" />
+  <img src="https://github.com/ASME-ground-robot/2021-22/blob/main/doc/grasp_coke_can.gif" width="600" />
 
   Later, rather than using the joint commands, we will use the <strong>end effector position</strong> given by the <strong>Perception</strong> pipeline to grasp our object.
 
