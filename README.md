@@ -189,18 +189,31 @@ goal:
   ```bash
 roslaunch rover_autonav gazebo_combined_v5.launch
 ```
-  In a second terminal:
+  In a <strong>second</strong> terminal:
   ```bash
 roslaunch cali_moveit_config cali_planning_execution.launch
 ```
 
-  - arm
+  - Arm
 
   <img src="https://github.com/CSULA-URC/2021-22/blob/main/doc/moveit_arm.gif" width="600" />
 
-  - gripper
+  - Gripper
+
+  <img src="https://github.com/ASME-ground-robot/2021-22/blob/main/doc/grasp_coke_can.gif" width="600" />
+
+  - Grasp the coke can using joint commands
+
+  In a <strong>third</strong> terminal:
+  ```bash
+rosrun manipulation pick_place_joint_cmds.py
+```
 
   <img src="https://github.com/CSULA-URC/2021-22/blob/main/doc/moveit_gripper.gif" width="600" />
+
+  Later, rather than using the joint commands, we will use the <strong>end effector position</strong> given by the <strong>Perception</strong> pipeline to grasp our object.
+
+
 
 
 
@@ -212,8 +225,10 @@ In order too perceive Cali's surroundings, an Intel Realsense d435 3D camera is 
 Before launching the perception pipeline the camera needs to be <strong>correctly oriented</strong>.
 Thus, we have created a perception pose in Moveit for that matter.
 
-In a third terminal:
+Close all previous terminals:
   ```bash
+roslaunch rover_autonav gazebo_combined_v5.launch
+roslaunch cali_moveit_config cali_planning_execution.launch
 roslaunch perception surface_detection_simple.launch
 ```
 
