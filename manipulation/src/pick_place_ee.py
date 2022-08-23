@@ -72,9 +72,9 @@ class Pick_Place_EE_Pose():
         rospy.sleep(2)
 
     def pregrasp(self):
-
+        # Step2: Pregrasp [ARM GROUP]
         
-
+        # This works with tolerances: 0.05, 0.01 and 0.01
         self.pose_target.position.x = 0.702
         self.pose_target.position.y = 0.039
         self.pose_target.position.z = 0.821
@@ -95,61 +95,29 @@ class Pick_Place_EE_Pose():
         # self.pose_target.orientation.z = 0.0
         # self.pose_target.orientation.w = 1
 
-        # rospy.logerr("LETS PRINT OUR GOAL POSE FROM THE BASE_LINK OF THE ARM:")
-        # rospy.logerr(self.pose_target.position.x)
-        # rospy.logerr(self.pose_target.position.y)
-        # rospy.logerr(self.pose_target.position.z)
-        # print(self.pose_target.position.x)
-        # print(self.pose_target.position.y)
-        # print(self.pose_target.position.z)
+        
         self.group_arm.set_pose_target(self.pose_target)
-
         self.plan2 = self.group_arm.plan()
-
         self.group_arm.go(wait=True)
-        # print("CONFIRMIIIIIIIIIIIING!!!!!!!!")
-        # rospy.logerr(self.pose_target.position.x)
-        # rospy.logerr(self.pose_target.position.y)
-        # rospy.logerr(self.pose_target.position.z)
-        # print(self.pose_target.position.x)
-        # print(self.pose_target.position.y)
-        # print(self.pose_target.position.z)
         rospy.sleep(2)
 
     # def grasp(self):
-    #     # Step2: Close Gripper joint value [GRIPPER GROUP]
+    #     # Step3: Close Gripper joint value [GRIPPER GROUP]
 
     #     self.group_variable_values_gripper_close[0] = -0.7
     #     self.group_gripper.set_joint_value_target(
     #         self.group_variable_values_gripper_close)
 
-    #     self.plan2 = self.group_gripper.plan()
+    #     self.plan3 = self.group_gripper.plan()
 
     #     self.group_gripper.go(wait=True)
     #     rospy.sleep(2)
 
     # def retreat(self):
-    #     # Step3: Retreat/Move back [ARM GROUP]
+    #     # Step4: Retreat/Move back [ARM GROUP]
 
     #     self.group_variable_values_arm_goal[0] = 0
     #     self.group_variable_values_arm_goal[1] = -1.7
-    #     self.group_variable_values_arm_goal[2] = 1.43
-    #     self.group_variable_values_arm_goal[3] = -1.76
-    #     self.group_variable_values_arm_goal[4] = -1.51
-    #     self.group_variable_values_arm_goal[5] = -1.6298
-    #     self.group_arm.set_joint_value_target(
-    #         self.group_variable_values_arm_goal)
-
-    #     self.plan3 = self.group_arm.plan()
-
-    #     self.group_arm.go(wait=True)
-    #     rospy.sleep(2)
-
-    # def rotate(self):
-    #     # Step4: Turn Shoulder Joint 180 degrees [ARM GROUP]
-
-    #     self.group_variable_values_arm_goal[0] = -3.14
-    #     self.group_variable_values_arm_goal[1] = -1.0
     #     self.group_variable_values_arm_goal[2] = 1.43
     #     self.group_variable_values_arm_goal[3] = -1.76
     #     self.group_variable_values_arm_goal[4] = -1.51
@@ -162,14 +130,31 @@ class Pick_Place_EE_Pose():
     #     self.group_arm.go(wait=True)
     #     rospy.sleep(2)
 
+    # def rotate(self):
+    #     # Step5: Turn Shoulder Joint 180 degrees [ARM GROUP]
+
+    #     self.group_variable_values_arm_goal[0] = -3.14
+    #     self.group_variable_values_arm_goal[1] = -1.0
+    #     self.group_variable_values_arm_goal[2] = 1.43
+    #     self.group_variable_values_arm_goal[3] = -1.76
+    #     self.group_variable_values_arm_goal[4] = -1.51
+    #     self.group_variable_values_arm_goal[5] = -1.6298
+    #     self.group_arm.set_joint_value_target(
+    #         self.group_variable_values_arm_goal)
+
+    #     self.plan5 = self.group_arm.plan()
+
+    #     self.group_arm.go(wait=True)
+    #     rospy.sleep(2)
+
     # def release_object(self):
-    #     # Step5: Open Gripper [GRIPPER GROUP]
+    #     # Step6: Open Gripper [GRIPPER GROUP]
 
     #     self.group_variable_values_gripper_close[0] = 0.2
     #     self.group_gripper.set_joint_value_target(
     #         self.group_variable_values_gripper_close)
 
-    #     self.plan5 = self.group_gripper.plan()
+    #     self.plan6 = self.group_gripper.plan()
 
     #     self.group_gripper.go(wait=True)
     #     rospy.sleep(2)
