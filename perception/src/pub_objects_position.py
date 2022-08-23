@@ -9,7 +9,7 @@ from geometry_msgs.msg import Pose
 
 class SurfaceObjectFilter:
 
-    def __init__(self, table_height_init=0.5, error_height=0.05):
+    def __init__(self, table_height_init=0.78, error_height=0.05):
 
         self._rate = rospy.Rate(5)
 

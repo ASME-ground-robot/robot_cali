@@ -8,7 +8,7 @@ from visualization_msgs.msg import Marker
 
 class SurfaceObjectFilter:
 
-    def __init__(self, table_height_init=0.5, error_height=0.05):
+    def __init__(self, table_height_init=0.78, error_height=0.05):
 
         self._rate = rospy.Rate(5)
 

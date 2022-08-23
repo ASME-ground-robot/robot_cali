@@ -39,10 +39,16 @@ class Pick_Place():
     def pregrasp(self):
         # Step2: pose_goal joint values [ARM GROUP]
 
-        self.group_variable_values_arm_goal[0] = 0.08
-        self.group_variable_values_arm_goal[1] = 1.15
-        self.group_variable_values_arm_goal[2] = 0.0
-        self.group_variable_values_arm_goal[3] = 0.41
+        # self.group_variable_values_arm_goal[0] = 0.08
+        # self.group_variable_values_arm_goal[1] = 1.15
+        # self.group_variable_values_arm_goal[2] = 0.0
+        # self.group_variable_values_arm_goal[3] = 0.41
+        # self.group_variable_values_arm_goal[4] = 0.0
+
+        self.group_variable_values_arm_goal[0] = 0.09
+        self.group_variable_values_arm_goal[1] = 0.33
+        self.group_variable_values_arm_goal[2] = 1.32
+        self.group_variable_values_arm_goal[3] = 0.0
         self.group_variable_values_arm_goal[4] = 0.0
         self.group_arm.set_joint_value_target(
             self.group_variable_values_arm_goal)
