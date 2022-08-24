@@ -127,7 +127,7 @@ save the end of your file as .world
 
   Open a new terminal:
   ```bash
-roslaunch rover_autonav navigation_v2.launch
+roslaunch rover_autonav navigation.launch
 ```
 
 Then in RViz we just need to select a goal pose using the <em><strong>2D Nav Goal</strong></em> tool:
@@ -187,7 +187,7 @@ goal:
 
   Close all previous terminals, then open a <strong>new</strong> terminal:
   ```bash
-roslaunch rover_autonav gazebo_combined_v5.launch
+roslaunch rover_autonav cali.launch
 ```
   In a <strong>second</strong> terminal:
   ```bash
@@ -227,8 +227,8 @@ Thus, we have created a perception pose in Moveit for that matter.
 
 Close all previous terminals:
   ```bash
-roslaunch rover_autonav gazebo_combined_v5.launch
-roslaunch cali_moveit_config cali_planning_execution.launch
+roslaunch rover_autonav cali.launch
+roslaunch cali_project_moveit_config cali_planning_execution.launch
 roslaunch perception surface_detection_simple.launch
 ```
 
