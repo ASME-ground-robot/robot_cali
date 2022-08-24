@@ -191,7 +191,7 @@ roslaunch rover_autonav cali.launch
 ```
   In a <strong>second</strong> terminal:
   ```bash
-roslaunch cali_moveit_config cali_planning_execution.launch
+roslaunch cali_project_moveit_config cali_planning_execution.launch
 ```
 
   - Arm
