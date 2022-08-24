@@ -20,10 +20,8 @@ class Pick_Place_EE_Pose():
         self.group_arm = moveit_commander.MoveGroupCommander("arm")
         self.group_gripper = moveit_commander.MoveGroupCommander("gripper")
 
-        # # Set the reference frame for pose targets
-        # reference_frame = "scorbot_base_link"
-        # # Set the scorbot_er3 reference frame accordingly
-        # self.group_arm.set_pose_reference_frame(reference_frame)
+        self.sub = rospy.Subscriber(
+            '/graspable_object_pose', Pose, self.pose_callback)
 
         # Get arm and gripper joint values
         self.group_variable_values_arm_goal = self.group_arm.get_current_joint_values()
@@ -31,15 +29,25 @@ class Pick_Place_EE_Pose():
         self.pose_target = Pose()
         self.rate = rospy.Rate(10)
 
-        self.offset_x = 0.00
-        self.offset_y = 0.00
-        self.offset_z = 0.08
+        self.offset_x = 0.005
+        self.offset_y = 0.0
+        self.offset_z = 0.01
+
+    def pose_callback(self, msg):
+        # This is the pose given from the camera 
+        # From the robot_footprint to the graspable object
+        self.pose_x_from_cam = msg.position.x
+        self.pose_y_from_cam = msg.position.y
+        self.pose_z_from_cam = msg.position.z
+
 
     def get_data(self):
-        # self.group_arm.set_end_effector_link("end_effector_link")
-        self.group_arm.set_goal_position_tolerance(0.05)
-        self.group_arm.set_goal_orientation_tolerance(0.01)
-        self.group_arm.set_goal_tolerance(0.01)
+
+        self.group_arm.allow_replanning(True)
+        self.group_arm.set_planning_time(15)
+        self.group_arm.set_goal_position_tolerance(0.015)
+        self.group_arm.set_goal_orientation_tolerance(0.2)
+        # self.group_arm.set_goal_tolerance(0.01)
     
         print("Reference frame: %s" %
       self.group_arm.get_planning_frame())  # = world = base_link
@@ -75,60 +83,72 @@ class Pick_Place_EE_Pose():
         # Step2: Pregrasp [ARM GROUP]
         
         # This works with tolerances: 0.05, 0.01 and 0.01
-        self.pose_target.position.x = 0.702
-        self.pose_target.position.y = 0.039
-        self.pose_target.position.z = 0.821
+        # self.pose_target.position.x = 0.702
+        # self.pose_target.position.y = 0.039
+        # self.pose_target.position.z = 0.821
+        # self.pose_target.orientation.x = -0.002
+        # self.pose_target.orientation.y = 0.04
+        # self.pose_target.orientation.z = 0.045
+        # self.pose_target.orientation.w = 0.998
 
-        self.pose_target.orientation.x = -0.002
-        self.pose_target.orientation.y = 0.04
-        self.pose_target.orientation.z = 0.045
-        self.pose_target.orientation.w = 0.998
 
-        
+        self.pose_target.position.x = self.pose_x_from_cam + self.offset_x
+        self.pose_target.position.y = self.pose_y_from_cam + self.offset_y
+        self.pose_target.position.z = self.pose_z_from_cam + self.offset_z
 
-        # self.pose_target.position.x = 0.74417257309- self.offset_x
-        # self.pose_target.position.y = 0.0232634060085
-        # self.pose_target.position.z = 0.787107050419 + self.offset_z
+        self.pose_target.orientation.x = 0.00
+        self.pose_target.orientation.y = 0.02
+        self.pose_target.orientation.z = 0.02
+        self.pose_target.orientation.w = 1
 
-        # self.pose_target.orientation.x = 0.00
-        # self.pose_target.orientation.y = 0.0
-        # self.pose_target.orientation.z = 0.0
-        # self.pose_target.orientation.w = 1
+        # Print our goal pose
+        rospy.logerr("LETS PRINT OUR GOAL POSE FROM THE BASE_LINK:")
+        rospy.logerr(self.pose_target.position.x)
+        rospy.logerr(self.pose_target.position.y)
+        rospy.logerr(self.pose_target.position.z)
+        print(self.pose_target.position.x)
+        print(self.pose_target.position.y)
+        print(self.pose_target.position.z)
 
         
         self.group_arm.set_pose_target(self.pose_target)
         self.plan2 = self.group_arm.plan()
         self.group_arm.go(wait=True)
+        print("CONFIRMIIIIIIIIIIIING!!!!!!!!")
+        rospy.logerr(self.pose_target.position.x)
+        rospy.logerr(self.pose_target.position.y)
+        rospy.logerr(self.pose_target.position.z)
+        print(self.pose_target.position.x)
+        print(self.pose_target.position.y)
+        print(self.pose_target.position.z)
         rospy.sleep(2)
 
-    # def grasp(self):
-    #     # Step3: Close Gripper joint value [GRIPPER GROUP]
+    def grasp(self):
+        # Step3: Open Gripper joint value [GRIPPER GROUP]
 
-    #     self.group_variable_values_gripper_close[0] = -0.7
-    #     self.group_gripper.set_joint_value_target(
-    #         self.group_variable_values_gripper_close)
+        self.group_variable_values_gripper_close[0] = 0.6
+        self.group_gripper.set_joint_value_target(
+            self.group_variable_values_gripper_close)
 
-    #     self.plan3 = self.group_gripper.plan()
+        self.plan3 = self.group_gripper.plan()
 
-    #     self.group_gripper.go(wait=True)
-    #     rospy.sleep(2)
+        self.group_gripper.go(wait=True)
+        rospy.sleep(2)
 
-    # def retreat(self):
-    #     # Step4: Retreat/Move back [ARM GROUP]
+    def retreat(self):
+        # Step4: Retreat/Move back [ARM GROUP]
+        self.group_variable_values_arm_goal[0] = 0
+        self.group_variable_values_arm_goal[1] = 0.45
+        self.group_variable_values_arm_goal[2] = -0.82
+        self.group_variable_values_arm_goal[3] = 1.95
+        self.group_variable_values_arm_goal[4] = 0
+        self.group_arm.set_joint_value_target(
+            self.group_variable_values_arm_goal)
 
-    #     self.group_variable_values_arm_goal[0] = 0
-    #     self.group_variable_values_arm_goal[1] = -1.7
-    #     self.group_variable_values_arm_goal[2] = 1.43
-    #     self.group_variable_values_arm_goal[3] = -1.76
-    #     self.group_variable_values_arm_goal[4] = -1.51
-    #     self.group_variable_values_arm_goal[5] = -1.6298
-    #     self.group_arm.set_joint_value_target(
-    #         self.group_variable_values_arm_goal)
+        self.plan4 = self.group_arm.plan()
 
-    #     self.plan4 = self.group_arm.plan()
-
-    #     self.group_arm.go(wait=True)
-    #     rospy.sleep(2)
+        self.group_arm.go(wait=True)
+        rospy.sleep(2)
 
     # def rotate(self):
     #     # Step5: Turn Shoulder Joint 180 degrees [ARM GROUP]
@@ -167,10 +187,10 @@ class Pick_Place_EE_Pose():
         pick_place_object.open_gripper()
         rospy.loginfo('Pregrasp..')
         pick_place_object.pregrasp()
-        # rospy.loginfo('Grasp..')
-        # pick_place_object.grasp()
-        # rospy.loginfo('Retreating..')
-        # pick_place_object.retreat()
+        rospy.loginfo('Grasp..')
+        pick_place_object.grasp()
+        rospy.loginfo('Retreating..')
+        pick_place_object.retreat()
         # rospy.loginfo('Rotating..')
         # pick_place_object.rotate()
         # rospy.loginfo('Releasing object..')

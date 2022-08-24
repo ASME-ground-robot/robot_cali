@@ -13,9 +13,10 @@
 	<!-- Launch other relevant files-->
 	<include file="$(find rover_autonav)/launch/rosbob_description.launch"/>
 
-	<!-- World File -->
+	<!-- World File : 2 worlds -> Sand_box.world OR ecst_lab.world-->
 	<arg name="world_file" default="$(find rover_autonav)/world/Sand_box.world"/>
-
+	<!-- <arg name="world_file" default="$(find rover_autonav)/world/ecst_lab.world"/> -->
+	
 	<!-- Launch Gazebo World -->
 	<include file="$(find gazebo_ros)/launch/empty_world.launch">
 		<arg name="use_sim_time" value="true"/>
