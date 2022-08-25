@@ -1,17 +1,14 @@
-<?xml version="1.0"?>
-
-
 <launch>
   
   <!-- Launch simulation-->
-  <include file="$(find rover_autonav)/launch/spawn_cali.launch"/>
+  <include file="$(find rover_autonav)/launch/spawn_cali_ecst_lab.launch"/>
 
 <!--Robot State Publisher-->
   <!-- <node pkg="robot_state_publisher" type="robot_state_publisher" name="robot_state_publisher" /> -->
   
 
   <!--Launch Map Server node & provide Map file-->
-  <arg name="map_file" default="$(find rover_autonav)/maps/Sandbox.yaml"/>
+  <arg name="map_file" default="$(find rover_autonav)/maps/ecst_thermal_lab.yaml"/>
   <node name="map_server" pkg="map_server" type="map_server" args="$(arg map_file)" />
   
   

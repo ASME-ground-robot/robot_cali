@@ -234,7 +234,7 @@ roslaunch perception surface_detection_simple.launch
 
 <img src="https://github.com/CSULA-URC/2021-22/blob/main/doc/perception.gif" width="600" />
 
-As we can see from the GIF we first obtain the <strong>PointCloud</strong>:
+As we can see from the GIF, we first obtain the <strong>PointCloud</strong>:
 
 <img src="https://github.com/CSULA-URC/2021-22/blob/main/doc/perception_point_cloud.png" width="600" />
 
