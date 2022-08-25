@@ -140,7 +140,7 @@ rosrun teleop_twist_keyboard teleop_twist_keyboard.py
 cd ~/catkin_ws/src/rover_autonav/maps
 rosrun map_server map_saver -f ecst_lab_map
 ```
-  <img src="https://github.com/ASME-ground-robot/2021-22/blob/main/doc/ecst_lab_map.png" width="600" />
+  <img src="https://github.com/ASME-ground-robot/2021-22/blob/main/doc/ecst_lab_map_updated.png" width="600" />
 
   ### 2) Localization
   [Add description]
