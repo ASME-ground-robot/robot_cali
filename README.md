@@ -263,7 +263,11 @@ rosrun perception pub_objects_position.py
 rosrun manipulation pick_place_ee.py
 ```
 
-We can see that its now able to grasp the object using our <strong>Perception/Manipulation</strong> pipeline.
+Here is a GIF of the whole <strong>Perception/Manipulation</strong> pipeline:
+
+<img src="https://github.com/ASME-ground-robot/2021-22/blob/main/doc/manipulation_perception_pipeline.gif" width="600" />
+
+We can see that it is now able to grasp the object using our <strong>Perception/Manipulation</strong> pipeline.
 
 
 

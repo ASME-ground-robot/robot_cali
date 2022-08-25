@@ -7,10 +7,10 @@
     <!-- <arg name="world_name" default="$(find rover_autonav)/world/Sand_box.world"/> -->
 
     <!--ECST Lab World-->
-    <arg name="world_name" default="$(find rover_autonav)/world/ecst_lab.world"/>
+    <!-- <arg name="world_name" default="$(find rover_autonav)/world/ecst_lab.world"/> -->
 
     <!-- Testing Perception World-->
-    <!-- <arg name="world_name" default="$(find rover_autonav)/world/test_perception_coke_can.world"/> -->
+    <arg name="world_name" default="$(find rover_autonav)/world/test_perception_coke_can.world"/>
     <!-- <arg name="world_name" default="$(find rover_autonav)/world/test_perception_unit_box.world"/> -->
 
     
