@@ -124,7 +124,7 @@ save the end of your file as .world
   ```bash
 roslaunch rover_autonav spawn_cali_ecst_lab.launch
 ```
-  In a <strong>second</strong> terminal, launch the slam_gmapping node (<em>shell#2</em>):
+  In a <strong>second</strong> terminal, launch the <em><strong>slam_gmapping</strong></em> node (<em>shell#2</em>):
   ```bash
 roslaunch rover_autonav slam_gmapping.launch
 ```
