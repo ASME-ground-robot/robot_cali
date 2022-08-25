@@ -157,6 +157,7 @@ Then in RViz we just need to select a goal pose using the <em><strong>2D Nav Goa
 
   <img src="https://github.com/CSULA-URC/2021-22/blob/main/doc/autonomous_navigation.gif" width="600" />
 
+  <img src="https://github.com/ASME-ground-robot/2021-22/blob/main/doc/AN_ecst_lab.gif" width="600" />
 
   ## Manipulation
   First, we do some testings using <em><strong>rqt_joint_trajectory_controller</strong></em> to control the arm joints and also the <em><strong>/gripper_controller/gripper_cmd/goal</strong></em> topic to control the gripper.

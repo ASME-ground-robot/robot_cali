@@ -8,7 +8,7 @@
   
 
   <!--Launch Map Server node & provide Map file-->
-  <arg name="map_file" default="$(find rover_autonav)/maps/ecst_thermal_lab.yaml"/>
+  <arg name="map_file" default="$(find rover_autonav)/maps/ecst_lab_map_updated.yaml"/>
   <node name="map_server" pkg="map_server" type="map_server" args="$(arg map_file)" />
   
   
