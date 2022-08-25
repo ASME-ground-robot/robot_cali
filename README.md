@@ -185,11 +185,11 @@ goal:
 
   ### 2) MoveIt
 
-  Close all previous terminals, then open a <strong>new</strong> terminal:
+  Close all previous terminals, then open a <strong>new</strong> terminal (<em>shell#1</em>):
   ```bash
 roslaunch rover_autonav cali.launch
 ```
-  In a <strong>second</strong> terminal:
+  In a <strong>second</strong> terminal (<em>shell#2</em>):
   ```bash
 roslaunch cali_project_moveit_config cali_planning_execution.launch
 ```
@@ -204,7 +204,7 @@ roslaunch cali_project_moveit_config cali_planning_execution.launch
 
   - Grasp the coke can using joint commands
 
-In a <strong>third</strong> terminal:
+In a <strong>third</strong> terminal (<em>shell#3</em>):
   ```bash
 rosrun manipulation pick_place_joint_cmds.py
 ```
@@ -220,12 +220,12 @@ rosrun manipulation pick_place_joint_cmds.py
 
 ## Perception
 
-In order too perceive Cali's surroundings, an Intel Realsense d435 3D camera is used and placed on top of the last link of the arm. The data will then be used in ROS via a topic.
+In order to perceive Cali's surroundings, an Intel Realsense d435 3D camera is used and placed on top of the last link of the arm. The data will then be used in ROS via a topic.
 
 Before launching the perception pipeline the camera needs to be <strong>correctly oriented</strong>.
 Thus, we have created a perception pose in Moveit for that matter.
 
-Close all previous terminals:
+Close all previous terminals, and open 3 new terminals (<em>shell#1, shell#2 and shell#3</em>):
   ```bash
 roslaunch rover_autonav cali.launch
 roslaunch cali_project_moveit_config cali_planning_execution.launch
@@ -243,7 +243,9 @@ Then with our <strong>surface_detection</strong> algorithm we can detect a surfa
 
 <img src="https://github.com/CSULA-URC/2021-22/blob/main/doc/surface_detection.png" width="600" />
 
-From the <strong>surface_detection</strong> we get the <em><strong>/surface_objects</strong></em> topic:
+From the <strong>surface_detection</strong> we get the <em><strong>/surface_objects</strong></em> topic.
+
+In a <strong>fourth</strong> terminal (<em>shell#4</em>):
 
 ```bash
 rostopic echo /surface_objects
@@ -251,6 +253,21 @@ rostopic echo /surface_objects
 <img src="https://github.com/CSULA-URC/2021-22/blob/main/doc/echo_surface_objects_v2.png" width="300" />
 
 This gives information about the surfaces and objects detected such as the geometry, postion, orientation or even the color of the object.
+
+We then use the position coordinates associated with the graspable object for MoveIt.
+
+In a <strong>fifth</strong> and <strong>sixth</strong> terminal (<em>shell#5 and shell#6</em>):
+
+```bash
+rosrun perception pub_objects_position.py
+rosrun manipulation pick_place_ee.py
+```
+
+We can see that its now able to grasp the object using our <strong>Perception/Manipulation</strong> pipeline.
+
+
+
+
 
 ## Mission Planner
 [Add description]
