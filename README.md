@@ -120,22 +120,22 @@ save the end of your file as .world
   ### 1) Mapping
   The first step is to create a <strong>map</strong> using the <em><strong>slam_gmapping</strong></em> package.
 
-  Open a new terminal and spawn the robot in Gazebo (<em>shell#1</em>):
+  Open a <strong>new</strong> terminal and spawn the robot in Gazebo (<em>shell#1</em>):
   ```bash
 roslaunch rover_autonav spawn_cali_ecst_lab.launch
 ```
-  In a second terminal, launch the slam_gmapping node (<em>shell#2</em>):
+  In a <strong>second</strong> terminal, launch the slam_gmapping node (<em>shell#2</em>):
   ```bash
 roslaunch rover_autonav slam_gmapping.launch
 ```
 
-  Now we will move around the environment using <em>teleop</em> to create our map. In a third terminal (<em>shell#3</em>):
+  Now we will move around the environment using <em>teleop</em> to create our map. In a <strong>third</strong> terminal (<em>shell#3</em>):
   ```bash
 rosrun teleop_twist_keyboard teleop_twist_keyboard.py
 ```
   <img src="https://github.com/ASME-ground-robot/2021-22/blob/main/doc/mapping.gif" width="600" />
 
-  Finally, we will save our new map and call it <em>ecst_lab_map</em>. In a fourth terminal (<em>shell#4</em>):
+  Finally, we will save our new map and call it <em>ecst_lab_map</em>. In a <strong>fourth</strong> terminal (<em>shell#4</em>):
   ```bash
 cd ~/catkin_ws/src/rover_autonav/maps
 rosrun map_server map_saver -f ecst_lab_map
