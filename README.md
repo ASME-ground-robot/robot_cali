@@ -28,7 +28,7 @@ Launch Autonomous Navigation
 ## manipulation_pkg
 Contains manipulator URDF and configuration files for the arm
 
-## cali_moveit_config
+## cali_project_moveit_config
 Contains Moveit configuration files
 
 ## perception_pkg
