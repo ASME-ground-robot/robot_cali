@@ -129,7 +129,7 @@ roslaunch rover_autonav spawn_cali_ecst_lab.launch
 roslaunch rover_autonav slam_gmapping.launch
 ```
 
-  Now we will move around the environment using <em>teleop</em> to create our map. In a <strong>third</strong> terminal (<em>shell#3</em>):
+  Now, we will move the robot around using <em>teleop</em> to create our map. In a <strong>third</strong> terminal (<em>shell#3</em>):
   ```bash
 rosrun teleop_twist_keyboard teleop_twist_keyboard.py
 ```
@@ -148,7 +148,7 @@ rosrun map_server map_saver -f ecst_lab_map
   [Add description]
   ### 4) Launch Autonomous Navigation node
 
-  Open a new terminal:
+  Close all previous shells and open a <strong>new</strong> terminal (<em>shell#1</em>):
   ```bash
 roslaunch rover_autonav navigation.launch
 ```
@@ -166,19 +166,19 @@ Then in RViz we just need to select a goal pose using the <em><strong>2D Nav Goa
   ### 1) rqt_joint_trajectory_controller & <em>/gripper_controller/gripper_cmd/goal</em> topic
   - <em><strong>rqt_joint_trajectory_controller</strong></em>
 
-  Open a new terminal:
+  Close all previous shells and open a <strong>new</strong> terminal (<em>shell#1</em>):
 
   ```bash
   roslaunch rover_autonav arm_fixed_to_ground.launch 
   ```
 
-  Now play with the <em><strong>rqt_joint_trajectory_controller</strong></em> GUI.
+  Then play with the <em><strong>rqt_joint_trajectory_controller</strong></em> GUI.
   
   <img src="https://github.com/CSULA-URC/2021-22/blob/main/doc/rqt_joint_trajectory_controller.gif" width="600" />
 
   -  <em><strong>/gripper_controller/gripper_cmd/goal</strong></em> topic
 
-  Now open a second terminal:
+  Now, open a <strong>second</strong> terminal (<em>shell#2</em>):
   ```bash
   rostopic pub /gripper_controller/gripper_cmd/goal control_msgs/GripperCommandActionGoal "header:
   seq: 0
