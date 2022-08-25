@@ -25,13 +25,13 @@ Robot "Cali" is an open-source robotic platform for research and education. The 
 ## rover_autonav
 Launch Autonomous Navigation
 
-## manipulation_pkg
+## manipulation
 Contains manipulator URDF and configuration files for the arm
 
 ## cali_project_moveit_config
 Contains Moveit configuration files
 
-## perception_pkg
+## perception
 Contains Perception Pipeline
 
 # Installation instructions
