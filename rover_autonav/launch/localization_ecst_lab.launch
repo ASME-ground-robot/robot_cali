@@ -1,14 +1,14 @@
 <launch>
   
   <!-- Launch simulation-->
-  <include file="$(find rover_autonav)/launch/spawn_cali_ecst_lab.launch"/>
+  <!-- <include file="$(find rover_autonav)/launch/spawn_cali_ecst_lab.launch"/> -->
 
 <!--Robot State Publisher-->
   <!-- <node pkg="robot_state_publisher" type="robot_state_publisher" name="robot_state_publisher" /> -->
   
 
   <!--Launch Map Server node & provide Map file-->
-  <arg name="map_file" default="$(find rover_autonav)/maps/ecst_lab_map_updated.yaml"/>
+  <arg name="map_file" default="$(find rover_autonav)/maps/real_updated_v3.yaml"/>
   <node name="map_server" pkg="map_server" type="map_server" args="$(arg map_file)" />
   
   
@@ -19,8 +19,7 @@
     <param name="base_frame_id" value="robot_footprint"/>
     <param name="use_map_topic" value="$(arg use_map_topic)"/>
     <!-- Publish scans from best pose at a max of 10 Hz -->
-    <param name="odom_model_type" value="diff"/>
-    <param name="odom_alpha5" value="0.1"/>
+    <param name="odom_model_type" value="diff-corrected"/>
     <param name="gui_publish_rate" value="10.0"/>
     <param name="laser_max_beams" value="60"/>
     <param name="laser_max_range" value="12.0"/>  <!-- The bigger this value the more precise the Localization-->
@@ -28,11 +27,11 @@
     <param name="max_particles" value="1000"/>
     <param name="kld_err" value="0.05"/>
     <param name="kld_z" value="0.99"/>
-    <param name="odom_alpha1" value="0.2"/>
-    <param name="odom_alpha2" value="0.2"/>
-    <!-- translation std dev, m -->
-    <param name="odom_alpha3" value="0.2"/>
-    <param name="odom_alpha4" value="0.2"/>
+    <param name="odom_alpha1" value="0.005"/>
+    <param name="odom_alpha2" value="0.005"/>
+    <param name="odom_alpha3" value="0.010"/>
+    <param name="odom_alpha4" value="0.005"/>
+    <param name="odom_alpha5" value="0.003"/>
     <param name="laser_z_hit" value="0.5"/>
     <param name="laser_z_short" value="0.05"/>
     <param name="laser_z_max" value="0.05"/>

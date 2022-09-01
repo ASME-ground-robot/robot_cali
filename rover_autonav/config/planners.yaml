@@ -3,7 +3,7 @@ recovery_behaviour_enabled: true
 
 NavfnROS:
   allow_unknown: true # Specifies whether or not to allow navfn to create plans that traverse unknown space.
-  default_tolerance: 0.2 # A tolerance on the goal point for the planner.
+  default_tolerance: 0.05 # A tolerance on the goal point for the planner.
 
 TrajectoryPlannerROS:
   # Robot Configuration Parameters
@@ -53,19 +53,20 @@ TrajectoryPlannerROS:
 
 DWAPlannerROS:
   # Robot configuration parameters
-  acc_lim_x: 2.5
+  acc_lim_x: 2
   acc_lim_y: 0
-  acc_lim_th: 3.2
+  acc_lim_th: 3
 
-  max_vel_x: 0.5
-  min_vel_x: 0.0
+  max_vel_x: 0.40
+  min_vel_x: -0.3
   max_vel_y: 0
   min_vel_y: 0
 
-  max_vel_trans: 0.5
-  min_vel_trans: 0.1
-  max_vel_theta: 1.0
-  min_vel_theta: 0.2
+  max_vel_trans: 0.40 # Absolute value
+  min_vel_trans: 0.1 # Absolute value
+  max_vel_theta: 2
+  min_vel_theta: 0 # Absolute value
+  
 
   # Goal Tolerance Parameters
   yaw_goal_tolerance: 0.2
@@ -80,14 +81,102 @@ DWAPlannerROS:
   # vtheta_samples: 20
   # penalize_negative_x: true
 
-  # # Trajectory scoring parameters
-  # path_distance_bias: 32.0 # The weighting for how much the controller should stay close to the path it was given
-  # goal_distance_bias: 24.0 # The weighting for how much the controller should attempt to reach its local goal, also controls speed
-  # occdist_scale: 0.01 # The weighting for how much the controller should attempt to avoid obstacles
+  # Trajectory scoring parameters
+  path_distance_bias: 32.0 # The weighting for how much the controller should stay close to the path it was given
+  goal_distance_bias: 20.0 # The weighting for how much the controller should attempt to reach its local goal, also controls speed
+  occdist_scale: 0.02 # The weighting for how much the controller should attempt to avoid obstacles
   # forward_point_distance: 0.325 # The distance from the center point of the robot to place an additional scoring point, in meters
   # stop_time_buffer: 0.2  # The amount of time that the robot must stThe absolute value of the veolicty at which to start scaling the robot's footprint, in m/sop before a collision in order for a trajectory to be considered valid in seconds
   # scaling_speed: 0.25 # The absolute value of the veolicty at which to start scaling the robot's footprint, in m/s
   # max_scaling_factor: 0.2 # The maximum factor to scale the robot's footprint by
 
-  # # Oscillation Prevention Parameters
+  # Oscillation Prevention Parameters
   # oscillation_reset_dist: 0.25 #How far the robot must travel in meters before oscillation flags are reset (double, default: 0.05)
+
+
+TebLocalPlannerROS:
+
+ odom_topic: odom
+    
+ # Trajectory
+  
+ teb_autosize: True # Enable automatic resizing of the trajectory w.r.t to the temporal resolution (recommended)
+ dt_ref: 0.45 # Desired temporal resolution of the trajectory (should be in the magniture of the underlying control rate)
+ dt_hysteresis: 0.1 # Hysteresis for automatic resizing depending on the current temporal resolution (dt): usually 10% of dt_ref
+ global_plan_overwrite_orientation: True # Overwrite orientation of local subgoals provided by the global planner
+ allow_init_with_backwards_motion: True # 
+ max_global_plan_lookahead_dist: 2.0 # Specify maximum length (cumulative Euclidean distances) of the subset of the global plan taken into account for optimization [if <=0: disabled; the length is also bounded by the local costmap size!].
+ feasibility_check_no_poses: 5 # Specify up to which pose on the predicted plan the feasibility should be checked each sampling interval
+ global_plan_viapoint_sep: 0.5
+    
+ # Robot
+         
+ max_vel_x: 0.5
+ max_vel_x_backwards: 0.12
+ max_vel_y: 0.0
+ max_vel_theta: 0.5
+ acc_lim_x: 0.5
+ acc_lim_theta: 0.5
+ min_turning_radius: 0.0 # diff-drive robot (can turn on place!)
+
+ footprint_model:
+  type: "polygon"
+  # type: "circular"
+  # radius: 0.659
+  #  line_start: [0.0, 0.0] # for type "line"
+  #  line_end: [0.4, 0.0] # for type "line"
+  vertices: [[-0.49, -0.44], [-0.49, 0.44], [0.49, 0.44], [0.49, -0.44]]
+
+ # GoalTolerance
+    
+ xy_goal_tolerance: 0.05
+ yaw_goal_tolerance: 0.05
+ free_goal_vel: False
+    
+ # Obstacles
+    
+ min_obstacle_dist: 0.1 # This value must also include our robot radius, since footprint_model is set to "point".
+ include_costmap_obstacles: True
+ costmap_obstacles_behind_robot_dist: 1.5  # enlarge the region of obstacles taken into account behind the robot
+ obstacle_poses_affected: 30
+ costmap_converter_plugin: ""
+ costmap_converter_spin_thread: True
+ costmap_converter_rate: 5
+
+ # Optimization
+    
+ no_inner_iterations: 5
+ no_outer_iterations: 4
+ optimization_activate: True
+ optimization_verbose: False
+ penalty_epsilon: 0.1
+ weight_max_vel_x: 2
+ weight_max_vel_theta: 2
+ weight_acc_lim_x: 1
+ weight_acc_lim_theta: 1
+ weight_kinematics_nh: 1000
+ weight_kinematics_forward_drive: 1
+ weight_kinematics_turning_radius: 1
+ weight_optimaltime: 1
+ weight_obstacle: 50
+ weight_dynamic_obstacle: 10 # not in use yet
+ weight_adapt_factor: 2
+ weight_viapoint: 5
+
+ # Homotopy Class Planner
+
+ enable_homotopy_class_planning: False
+ enable_multithreading: True
+ simple_exploration: False
+ max_number_classes: 4
+ selection_cost_hysteresis: 1.0
+ selection_obst_cost_scale: 1.0
+ selection_alternative_time_cost: False
+ 
+ roadmap_graph_no_samples: 15
+ roadmap_graph_area_width: 5
+ h_signature_prescaler: 0.5
+ h_signature_threshold: 0.1
+ obstacle_keypoint_offset: 0.1
+ obstacle_heading_threshold: 0.45
+ visualize_hc_graph: False

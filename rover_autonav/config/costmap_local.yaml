@@ -2,7 +2,10 @@ local_costmap: #namespace
   global_frame: odom
   robot_base_frame: robot_footprint
   rolling_window: true
+  width: 4
+  height: 4
 
   plugins:
     - {name: obstacles_laser,           type: "costmap_2d::ObstacleLayer"}
-    - {name: inflation,                 type: "costmap_2d::InflationLayer"}
+    # - {name: inflation_global,          type: "costmap_2d::InflationLayer"}
+    - {name: inflation_local,           type: "costmap_2d::InflationLayer"}

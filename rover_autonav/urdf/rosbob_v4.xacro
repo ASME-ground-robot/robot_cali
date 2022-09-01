@@ -1,7 +1,7 @@
 <?xml version='1.0'?>
 
-<robot name="rosbob" xmlns:xacro="http://www.ros.org/wiki/xacro">
-	<xacro:property name="robot_name" value="rosbob" />
+<robot name="cali" xmlns:xacro="http://www.ros.org/wiki/xacro">
+	<xacro:property name="robot_name" value="cali" />
 	<xacro:property name="robot_chassis_mass" value="34.5"/>
 	<xacro:property name="robot_chassis_length" value="0.7493"/>
 	<xacro:property name="robot_chassis_width" value="0.41275"/>
@@ -10,7 +10,7 @@
 
 	<xacro:property name="robot_wheel_mass" value="1"/>
 	<xacro:property name="robot_wheel_length" value="0.112"/>
-	<xacro:property name="robot_wheel_radius" value="0.127"/>
+	<xacro:property name="robot_wheel_radius" value="0.153"/>
 
 	<xacro:property name="camera_mass" value="0.1"/>
 	<xacro:property name="hokoyu_mass" value="1e-5"/>
@@ -23,7 +23,7 @@
 
 		<inertial>
 			<mass value="${robot_chassis_mass}"/>
-      		<origin xyz="0.0 0.3429" rpy=" 0 0 0"/>
+      		<origin xyz="-0.05 0 0.3429" rpy=" 0 0 0"/>
 
       		<inertia 
       			ixx="0.5806792822" ixy="0" ixz="0"
@@ -56,7 +56,7 @@
 	<link name="right_wheel_back">
 		<inertial>
 			<mass value="${robot_wheel_mass}"/>
-			<origin xyz="0 0 0" rpy="0 0 1.5707"/>
+			<origin xyz="0 0 0" rpy="1.5707 1.5707 -1.5707"/>
 			<inertia
 				ixx="0.005077583333333333" ixy="0.0" ixz="0.0"
 				iyy="0.0080645" iyz="0.0"
@@ -73,7 +73,7 @@
 		</visual>
 
 		<collision>
-			<origin xyz="0 0 0" rpy="0 1.5707 1.5707"/>
+			<origin xyz="0 0 0" rpy="1.5707 0 0"/>
 			<geometry>
 				<cylinder radius="${robot_wheel_radius}" length="${robot_wheel_length}"/>
 			</geometry>
@@ -85,7 +85,7 @@
 	<link name="right_wheel_front">
 		<inertial>
 			<mass value="${robot_wheel_mass}"/>
-			<origin xyz="0 0 0" rpy="0 1.5707 1.5707"/>
+			<origin xyz="0 0 0" rpy="1.5707 1.5707 -1.5707"/>
 			<inertia
 				ixx="0.005077583333333333" ixy="0.0" ixz="0.0"
 				iyy="0.0080645" iyz="0.0"
@@ -102,7 +102,7 @@
 		</visual>
 
 		<collision>
-			<origin xyz="0 0 0" rpy="0 1.5707 1.5707"/>
+			<origin xyz="0 0 0" rpy="1.5707 0.0 0"/>
 			<geometry>
 				<cylinder radius="${robot_wheel_radius}" length="${robot_wheel_length}"/>
 			</geometry>
@@ -116,7 +116,7 @@
 	<link name="left_wheel_back">
 		<inertial>
 			<mass value="${robot_wheel_mass}"/>
-			<origin xyz="0 0 0" rpy="0 1.5707 1.5707"/>
+			<origin xyz="0 0 0" rpy="1.5707 1.5707 -1.5707"/>
 			<inertia
 				ixx="0.005077583333333333" ixy="0.0" ixz="0.0"
 				iyy="0.0080645" iyz="0.0"
@@ -125,7 +125,7 @@
 		</inertial>
 
 		<visual>
-			<origin xyz="0 0 0" rpy="1.5707 0.0 1.5707"/>
+			<origin xyz="0 0 0" rpy="1.5707 0.0 -1.5707"/>
 			<geometry>
 				<mesh filename="package://rover_autonav/meshes_v2/wheel.STL" />
 				<!-- <cylinder radius="${robot_wheel_radius}" length="${robot_wheel_length}"/> -->
@@ -133,7 +133,7 @@
 		</visual>
 
 		<collision>
-			<origin xyz="0 0 0" rpy="0 1.5707 1.5707"/>
+			<origin xyz="0 0 0" rpy="1.5707 0.0 0"/>
 			<geometry>
 				<cylinder radius="${robot_wheel_radius}" length="${robot_wheel_length}"/>
 			</geometry>
@@ -146,7 +146,7 @@
 	<link name="left_wheel_front">
 		<inertial>
 			<mass value="${robot_wheel_mass}"/>
-			<origin xyz="0 0 0" rpy="0 1.5707 1.5707"/>
+			<origin xyz="0 0 0" rpy="1.5707 1.5707 -1.5707"/>
 			<inertia
 				ixx="0.005077583333333333" ixy="0.0" ixz="0.0"
 				iyy="0.0080645" iyz="0.0"
@@ -155,7 +155,7 @@
 		</inertial>
 
 		<visual>
-			<origin xyz="0 0 0" rpy="1.5707 0.0 1.5707"/>
+			<origin xyz="0 0 0" rpy="1.5707 0.0 -1.5707"/>
 			<geometry>
 				<mesh filename="package://rover_autonav/meshes_v2/wheel.STL" />
 				<!-- <cylinder radius="${robot_wheel_radius}" length="${robot_wheel_length}"/> -->
@@ -163,7 +163,7 @@
 		</visual>
 
 		<collision>
-			<origin xyz="0 0 0" rpy="0 1.5707 1.5707"/>
+			<origin xyz="0 0 0" rpy="1.5707 0.0 0"/>
 			<geometry>
 				<cylinder radius="${robot_wheel_radius}" length="${robot_wheel_length}"/>
 			</geometry>
@@ -234,7 +234,7 @@
 
 	<!-- Right Wheel Joint Back-->
 	<joint type="continuous" name="right_wheel_hinge_back">
-	    <origin xyz="-0.38 -0.38 0.081" rpy="0 0 0" />
+	    <origin xyz="-0.38 -0.36785 0.081" rpy="0 0 0" />
 		<!-- <origin xyz="-0.37465 -0.313175 -0.2159" rpy="0 0 0" /> -->
 	    <parent link="base_link"/>
 	    <child link="right_wheel_back" />
@@ -245,7 +245,7 @@
 
 	<!-- Right Wheel Joint Front-->
 	<joint type="continuous" name="right_wheel_hinge_front">
-	    <origin xyz="0.345 -0.38 0.081" rpy="0 0 0" />
+	    <origin xyz="0.345 -0.36785 0.081" rpy="0 0 0" />
 		<!-- <origin xyz="0.37465 -0.313175 -0.2159" rpy="0 0 0" /> -->
 	    <parent link="base_link"/>
 	    <child link="right_wheel_front" />
@@ -257,7 +257,7 @@
 
 	<!-- Left Wheel Joint Back-->
 	<joint type="continuous" name="left_wheel_hinge_back">
-	    <origin xyz="-0.38 0.38 0.081" rpy="0 0 0" />
+	    <origin xyz="-0.38 0.36785 0.081" rpy="0 0 0" />
 		<!-- <origin xyz="-0.37465 0.313175 -0.2159" rpy="0 0 0" /> -->
 	    <parent link="base_link"/>
 	    <child link="left_wheel_back" />
@@ -268,7 +268,7 @@
 
 	<!-- Left Wheel Joint Front-->
 	<joint type="continuous" name="left_wheel_hinge_front">
-	    <origin xyz="0.345 0.38 0.081" rpy="0 0 0" />
+	    <origin xyz="0.345 0.36785 0.081" rpy="0 0 0" />
 		<!-- <origin xyz="0.37465 0.313175 -0.2159" rpy="0 0 0" /> -->
 	    <parent link="base_link"/>
 	    <child link="left_wheel_front" />
@@ -369,6 +369,6 @@
 	</gazebo>
 
 	<!-- Motor, Camera and Lidar Simulation -->
-	<xacro:include filename="$(find rover_autonav)/urdf/rosbob_v3.gazebo" />
+	<xacro:include filename="$(find rover_autonav)/urdf/rosbob_v4.gazebo" />
 
 </robot>

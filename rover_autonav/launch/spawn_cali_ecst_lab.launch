@@ -8,13 +8,13 @@
 	<arg name="roll" default="0"/>
 	<arg name="pitch" default="0"/>
 	<arg name="yaw" default="0"/>
-	<arg name="robot_name" default="rosbob"/>
+	<arg name="robot_name" default="cali"/>
 
 	<!-- Launch other relevant files-->
 	<include file="$(find rover_autonav)/launch/cali_description.launch"/>
 
 	<!-- World File -->
-	<arg name="world_file" default="$(find rover_autonav)/world/ecst_lab.world"/>
+	<arg name="world_file" default="$(find rover_autonav)/world/real_ecst.world"/>
 	
 	<!-- Launch Gazebo World -->
 	<include file="$(find gazebo_ros)/launch/empty_world.launch">
@@ -29,7 +29,7 @@
 
 	<!-- Spawn My Robot -->
 	<node name="urdf_spawner" pkg="gazebo_ros" type="spawn_model" respawn="false" output="screen"
-		args="-urdf -param robot_description -model rosbob
+		args="-urdf -param robot_description -model cali
 			  -x $(arg x) -y $(arg y) -z $(arg z)
 			  -R $(arg roll) -P $(arg pitch) -Y $(arg yaw)"/>
 

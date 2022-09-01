@@ -1,8 +1,6 @@
 <?xml version="1.0"?>
 <launch>
-
-    <!-- roslaunch arguments -->
-    <arg name="debug" default="false"/>
+    <!-- Launch World-->
     <!--Sand_box World-->
     <!-- <arg name="world_name" default="$(find rover_autonav)/world/Sand_box.world"/> -->
 
@@ -10,15 +8,13 @@
     <!-- <arg name="world_name" default="$(find rover_autonav)/world/ecst_lab.world"/> -->
 
     <!-- Testing Perception World-->
-    <arg name="world_name" default="$(find rover_autonav)/world/test_perception_coke_can.world"/>
+    <arg name="world_name" default="$(find rover_autonav)/world/test_perception_ecst_table_v3.world"/>
+    <!-- <arg name="world_name" default="$(find rover_autonav)/world/test_perception_coke_can.world"/> -->
     <!-- <arg name="world_name" default="$(find rover_autonav)/world/test_perception_unit_box.world"/> -->
 
     
-
-
     <!-- <param name="robot_description" command="cat '$(find rover_autonav)/urdf/rover_autonav_skid_v2.urdf'" /> -->
     <param name="robot_description" command="$(find xacro)/xacro --inorder '$(find rover_autonav)/urdf/cali_urdf_complete_v3.xacro'" />
-
 
     <!-- send fake joint values -->
     <!-- <node name="joint_state_publisher_gui" pkg="joint_state_publisher_gui" type="joint_state_publisher_gui" >
@@ -36,19 +32,15 @@
     <arg name="y" default="0.0"/>
     <arg name="z" default="0.1"/>
 
+    <!-- Spawn model -->
     <node name="spawn_gazebo_model" pkg="gazebo_ros" type="spawn_model" output="screen"
           args="-urdf -param robot_description -model rover_autonav -x $(arg x) -y $(arg y) -z $(arg z)" />
-
 
     <!-- JOINT STATE CONTROLLER -->
     <rosparam file="$(find manipulation)/config/joint_state_controller.yaml" command="load"/>
 
-    <!-- <node name="joint_state_controller_spawner" pkg="controller_manager" type="controller_manager" args="spawn joint_state_controller" respawn="false" output="screen"/> -->
-
     <!-- ARM CONTROLLER -->
     <rosparam file="$(find manipulation)/config/arm_controller_scorbot.yaml" command="load"/>
-
-    <!-- <node name="arm_controller_spawner" pkg="controller_manager" type="controller_manager" args="spawn scaled_pos_joint_traj_controller" respawn="false" output="screen"/> -->
 
     <!--GRIPPER CONTROLLER-->
     <rosparam file="$(find manipulation)/config/gripper_controller.yaml" command="load"/>
@@ -56,25 +48,21 @@
 
     <!-- <node name="gripper_controller_spawner" pkg="controller_manager" type="spawner" respawn="false" output="screen" args="gripper_controller"/> -->
 
-    <!-- Launch PIDs for Arm Controller-->
+    <!-- Launch PIDs for Arm and Gripper Controller-->
     <!-- <rosparam file="$(find manipulation)/config/arm_pids.yaml" command="load" /> -->
-
-    <!-- Launch PIDs for Gripper Controller-->
     <rosparam file="$(find manipulation)/config/gazebo_controller.yaml" command="load" />
 
     <!-- Controller Manager-->
     <node name="controller_spawner" pkg="controller_manager" type="spawner" output="screen" 
     args="joint_state_controller scaled_pos_joint_traj_controller gripper_controller"/>
 
-    <!-- args="joint_state_controller scaled_pos_joint_traj_controller gripper_controller"/> -->
-
-    <!-- start trajectory controller GUI to control each joint separately -->
+    <!-- Trajectory controller GUI to control arm joints -->
     <node name="arm_control_gui" pkg="rqt_joint_trajectory_controller" type="rqt_joint_trajectory_controller" respawn="false" output="screen"/>
 
     <!-- We resume the logic in empty_world.launch, changing only the name of the world to be launched -->
     <include file="$(find gazebo_ros)/launch/empty_world.launch">
             <arg name="world_name" value="$(arg world_name)"/>
-            <arg name="debug" value="$(arg debug)" />
+            <arg name="debug" value="false" />
             <arg name="paused" value="false"/>
             <arg name="use_sim_time" value="true"/>
             <arg name="headless" value="false"/>

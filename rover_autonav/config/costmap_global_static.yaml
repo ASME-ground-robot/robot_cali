@@ -1,7 +1,9 @@
 global_frame: map
+robot_base_frame: robot_footprint
+
 rolling_window: false
 
 plugins:
   - {name: static,                  type: "costmap_2d::StaticLayer"}
-  - {name: obstacles_laser,         type: "costmap_2d::ObstacleLayer"}
-  - {name: inflation,               type: "costmap_2d::InflationLayer"}
+  # - {name: obstacles_laser,         type: "costmap_2d::ObstacleLayer"}
+  - {name: inflation_global,        type: "costmap_2d::InflationLayer"}

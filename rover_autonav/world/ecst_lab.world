@@ -2693,7 +2693,7 @@
           <wrench>0 0 0 0 -0 0</wrench>
         </link>
       </model>
-      <model name='mars_rover'>
+      <!-- <model name='mars_rover'>
         <pose frame=''>-5.90444 -4.54911 0 0 -0 0.728729</pose>
         <scale>1 1 1</scale>
         <link name='link'>
@@ -2702,8 +2702,8 @@
           <acceleration>0 0 0 0 -0 0</acceleration>
           <wrench>0 0 0 0 -0 0</wrench>
         </link>
-      </model>
-      <model name='pioneer3at'>
+      </model> -->
+      <!-- <model name='pioneer3at'>
         <pose frame=''>-4.89583 -4.39571 0.169999 0 2.1e-05 1.61648</pose>
         <scale>1 1 1</scale>
         <link name='chassis'>
@@ -2736,7 +2736,7 @@
           <acceleration>0.357504 -2.11056 8.23272 -2.89202 -0.068528 2.98792</acceleration>
           <wrench>0.536256 -3.16585 12.3491 0 -0 0</wrench>
         </link>
-      </model>
+      </model> -->
       <light name='sun'>
         <pose frame=''>0 0 10 0 -0 0</pose>
       </light>
@@ -3919,7 +3919,7 @@
       </link>
       <pose frame=''>0.462003 -2.76084 0 0 -0 0</pose>
     </model>
-    <model name='pioneer3at'>
+    <!-- <model name='pioneer3at'>
       <pose frame=''>-6.15231 -4.64658 0.18 0 -0 0</pose>
       <static>0</static>
       <link name='chassis'>
@@ -4240,8 +4240,8 @@
         <left_rear>left_rear</left_rear>
         <MaxForce>5.0</MaxForce>
       </plugin>
-    </model>
-    <model name='mars_rover'>
+    </model> -->
+    <!-- <model name='mars_rover'>
       <static>1</static>
       <link name='link'>
         <collision name='solar_panel_collision'>
@@ -4659,7 +4659,7 @@
         <kinematic>0</kinematic>
       </link>
       <pose frame=''>-5.224 -4.3513 0 0 -0 0</pose>
-    </model>
+    </model> -->
     <gui fullscreen='0'>
       <camera name='user_camera'>
         <pose frame=''>-19.5246 5.16447 17.7765 0 0.70764 0.032178</pose>
