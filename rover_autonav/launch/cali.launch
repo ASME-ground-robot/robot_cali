@@ -8,7 +8,7 @@
     <!-- <arg name="world_name" default="$(find rover_autonav)/world/ecst_lab.world"/> -->
 
     <!-- Testing Perception World-->
-    <arg name="world_name" default="$(find rover_autonav)/world/test_perception_ecst_table_v3.world"/>
+    <arg name="world_name" default="$(find rover_autonav)/world/test_perception_ecst_table.world"/>
     <!-- <arg name="world_name" default="$(find rover_autonav)/world/test_perception_coke_can.world"/> -->
     <!-- <arg name="world_name" default="$(find rover_autonav)/world/test_perception_unit_box.world"/> -->
 

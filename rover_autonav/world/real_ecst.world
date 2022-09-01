@@ -6210,18 +6210,18 @@
       <static>1</static>
     </model>
     <state world_name='default'>
-      <sim_time>943 313000000</sim_time>
-      <real_time>179 952977460</real_time>
-      <wall_time>1661897282 149237654</wall_time>
-      <iterations>168972</iterations>
+      <sim_time>1116 699000000</sim_time>
+      <real_time>184 951629062</real_time>
+      <wall_time>1662060036 294796668</wall_time>
+      <iterations>173386</iterations>
       <model name='coke_can'>
-        <pose frame=''>3.18107 10.801 0.551472 -0.010994 0.003889 -0.098774</pose>
+        <pose frame=''>3.09491 10.8104 0.551471 -0.011266 0.004034 0.021266</pose>
         <scale>1 1 1</scale>
         <link name='link'>
-          <pose frame=''>3.18107 10.801 0.551472 -0.010994 0.003889 -0.098774</pose>
-          <velocity>-5.2e-05 2.2e-05 0.009965 0.008625 0.012192 0.00354</velocity>
-          <acceleration>1.27418 1.82029 16.7027 0.475766 -0.955664 -0.270888</acceleration>
-          <wrench>0.49693 0.709912 6.51405 0 -0 0</wrench>
+          <pose frame=''>3.09491 10.8104 0.551471 -0.011266 0.004034 0.021266</pose>
+          <velocity>-3.9e-05 4.2e-05 0.000321 0.025213 0.015219 -0.001132</velocity>
+          <acceleration>0 0 -9.8 -1.8e-05 3e-05 0</acceleration>
+          <wrench>0 0 -3.822 0 -0 0</wrench>
         </link>
       </model>
       <model name='ecst_lab_v2'>
@@ -7045,13 +7045,13 @@
         </link>
       </model>
       <model name='ecst_table_v5'>
-        <pose frame=''>3.09389 10.939 0.277019 0 -0 -0.001727</pose>
+        <pose frame=''>3.08887 10.975 0.277013 0 -1.2e-05 -0.003042</pose>
         <scale>1 1 1</scale>
         <link name='link_1'>
-          <pose frame=''>3.09389 10.939 0.277019 0 -0 -0.001727</pose>
-          <velocity>-3e-06 -5e-06 0.01 1.7e-05 -1.2e-05 -0</velocity>
-          <acceleration>-0.003368 -0.004809 10.0001 0.017393 -0.012174 2e-06</acceleration>
-          <wrench>-0.016838 -0.024047 50.0006 0 -0 0</wrench>
+          <pose frame=''>3.08887 10.975 0.277013 0 -1.2e-05 -0.003042</pose>
+          <velocity>-0.003272 7e-06 -0.005349 -3.4e-05 -0.011812 4e-06</velocity>
+          <acceleration>-3.27223 0.006756 -5.34865 0.020097 0.754441 0.00447</acceleration>
+          <wrench>-16.3612 0.033781 -26.7433 0 -0 0</wrench>
         </link>
       </model>
       <model name='ground_plane'>
@@ -7070,7 +7070,7 @@
     </state>
     <gui fullscreen='0'>
       <camera name='user_camera'>
-        <pose frame=''>2.92863 8.54542 2.48579 0 0.833801 1.23522</pose>
+        <pose frame=''>3.02127 10.5928 1.14697 0 1.1978 1.09922</pose>
         <view_controller>orbit</view_controller>
         <projection_type>perspective</projection_type>
       </camera>
