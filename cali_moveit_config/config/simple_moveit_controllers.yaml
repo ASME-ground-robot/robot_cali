@@ -1,0 +1,19 @@
+controller_list:
+  - name: scaled_pos_joint_traj_controller
+    action_ns: follow_joint_trajectory
+    type: FollowJointTrajectory
+    default: True
+    joints:
+      - scorbot_joint_1
+      - scorbot_joint_2
+      - scorbot_joint_3
+      - scorbot_joint_4
+      - scorbot_joint_5
+
+  - name: gripper_controller
+    action_ns: gripper_cmd
+    type: GripperCommand
+    default: True
+    joints:
+      - scorbot_pad1_joint
+   
