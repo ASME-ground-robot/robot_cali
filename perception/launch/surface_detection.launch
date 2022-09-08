@@ -1,0 +1,6 @@
+<?xml version="1.0"?>
+<launch>
+    <node name="surface_perception_node" pkg="surface_perception" type="demo" output="screen" args="robot_footprint">
+        <remap from="cloud_in" to="/front_rgbd_camera/depth/points"/>
+    </node>
+</launch>

@@ -3,7 +3,7 @@
 
     <!--ECST Lab World-->
     <!-- <arg name="world_name" default="$(find rover_autonav)/world/ecst_lab.world"/>   -->
-    <arg name="world_name" default="$(find rover_autonav)/world/real_ecst.world"/>
+    <arg name="world_name" default="$(find rover_autonav)/world/real_world.world"/>
 
     <!-- XACRO file -->
     <param name="robot_description" command="$(find xacro)/xacro --inorder '$(find rover_autonav)/urdf/cali_urdf_complete_v3.xacro'" />
@@ -18,10 +18,22 @@
     <arg name="x" default="0.0"/>
     <arg name="y" default="0.0"/>
     <arg name="z" default="0.1"/>
+    <arg name="roll" default="0"/>
+	<arg name="pitch" default="0"/>
+	<arg name="yaw" default="0"/>
+
+
+    <!-- Test Perception/manipulation Pipeline-->
+    <!-- <arg name="x" default="3.0282"/>
+    <arg name="y" default="10.1044"/>
+    <arg name="z" default="0.1"/>
+    <arg name="roll" default="0"/>
+	<arg name="pitch" default="0"/>
+	<arg name="yaw" default="1.570796"/> -->
 
     <!-- Spawn model -->
     <node name="spawn_gazebo_model" pkg="gazebo_ros" type="spawn_model" output="screen"
-          args="-urdf -param robot_description -model rover_autonav -x $(arg x) -y $(arg y) -z $(arg z)" />
+          args="-urdf -param robot_description -model rover_autonav -x $(arg x) -y $(arg y) -z $(arg z) -R $(arg roll) -P $(arg pitch) -Y $(arg yaw)"/>" />
 
 
     <!-- JOINT STATE CONTROLLER -->

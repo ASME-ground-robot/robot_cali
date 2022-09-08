@@ -86,6 +86,7 @@
       <heading_deg>0</heading_deg>
     </spherical_coordinates>
     <model name='ecst_table_v5'>
+      <static>1</static>
       <link name='link_1'>
         <inertial>
           <mass>5</mass>
@@ -185,7 +186,7 @@
           </surface>
         </collision>
       </link>
-      <static>0</static>
+      <!-- <static>0</static> -->
       <allow_auto_disable>1</allow_auto_disable>
       <pose frame=''>1.23771 -0.235051 0 0 -0 0</pose>
     </model>

@@ -12,7 +12,7 @@
   <!-- <xacro:include filename="$(find rover_autonav)/urdf/rosbob_v2.xacro" /> -->
   
   <!-- MESH FOR MOBILE ROBOT-->
-  <xacro:include filename="$(find rover_autonav)/urdf/rosbob_v3.xacro" />
+  <xacro:include filename="$(find rover_autonav)/urdf/rosbob_v5.xacro" />
   
 
 
@@ -25,13 +25,16 @@
 
 
   <!-- Here we create the Xacro macro to attach the Gripper to the arm_link-->
-  <xacro:scorbot prefix="scorbot" parent="arm_link">
+  <!-- <xacro:scorbot prefix="scorbot" parent="arm_link"> -->
+  <xacro:scorbot prefix="scorbot" parent="robot_footprint">    
+
 
     <!-- NO MESH FOR MOBILE ROBOT--> 
     <!-- <origin xyz="0.0 0 0.43" rpy="0 0 0" /> -->
 
     <!-- MESH FOR MOBILE ROBOT-->
-    <origin xyz="0.27 0 0.28" rpy="0 0 0" />
+    <!-- <origin xyz="0.27 0 0.28" rpy="0 0 0" /> -->
+    <origin xyz="0.27 0 0.359" rpy="0 0 0" />
 
   </xacro:scorbot>
 </robot>

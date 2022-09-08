@@ -133,8 +133,8 @@ class Pick_Place():
         # rospy.loginfo('Releasing object..')
         # pick_place_object.release_object()
 
-        # rospy.loginfo('Shuting Down ..')
-        # moveit_commander.roscpp_shutdown()
+        rospy.loginfo('Shuting Down ..')
+        moveit_commander.roscpp_shutdown()
 
 
 if __name__ == '__main__':

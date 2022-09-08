@@ -6,7 +6,7 @@
 	<xacro:property name="robot_chassis_length" value="0.7493"/>
 	<xacro:property name="robot_chassis_width" value="0.41275"/>
     <xacro:property name="robot_chassis_height" value="0.1778"/>
-	
+
 
 	<xacro:property name="robot_wheel_mass" value="1"/>
 	<xacro:property name="robot_wheel_length" value="0.12"/>
@@ -18,8 +18,15 @@
 	<xacro:property name="pi" value="3.141592654"/>
 	<xacro:property name="half_pi" value="1.570796327"/>
 
+    <!--Inertia Calculator for a Box-->
+    <xacro:macro name="box_inertia" params="mass x y z">
+        <inertia  ixx="${mass*(y*y+z*z)/12.0}" ixy = "0" ixz = "0"
+              iyy="${mass*(x*x+z*z)/12.0}" iyz = "0"
+              izz="${mass*(x*x+y*y)/12.0}"
+        />
+    </xacro:macro>
 
-	
+
 	<!-- Make Chassis of Bot -->
 	<link name="base_link">
 		<pose>0 0 0 0 0 0</pose>
@@ -27,12 +34,7 @@
 		<inertial>
 			<mass value="${robot_chassis_mass}"/>
       		<origin xyz="-0.05 0 0.3429" rpy=" 0 0 0"/>
-
-      		<inertia 
-      			ixx="0.5806792822" ixy="0" ixz="0"
-      			iyy="1.705057074" iyz="0"
-      			izz="2.103962526"
-      		/>
+      		<xacro:box_inertia mass="${robot_chassis_mass}" x="${robot_chassis_length}" y="${robot_chassis_width}" z="${robot_chassis_height}"/>
 		</inertial>
 
 		<collision name="collision">
@@ -53,7 +55,7 @@
 
 	</link>
 
-	
+
 
 	<!-- Right Wheel Back -->
 	<link name="right_wheel_back">
@@ -232,7 +234,7 @@
 		</collision>
 	</link>
 
-	
+
 		<!-- Define Joints -->
 
 	<!-- Right Wheel Joint Back-->
@@ -299,26 +301,26 @@
 	<joint name="hokuyo_joint" type="fixed">
 	    <origin xyz="0.5 0 0.2" rpy="0 0 0" />
 	    <parent link="base_link"/>
-	    <child link="hokuyo" />  
-	    <axis xyz="0 1 0"/> 
+	    <child link="hokuyo" />
+	    <axis xyz="0 1 0"/>
 	</joint>
 
 	<!-- JOIN ARM URDF !!!!!!!!!!!!!!!!!!-->
 
-	<joint name="arm_fixed_joint" type="fixed">
+	<!-- <joint name="arm_fixed_joint" type="fixed">
       <parent link="base_link" />
       <child link = "arm_link" />
       <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0" />
-    </joint>
+    </joint> -->
 
-    <link name="arm_link">
+    <!-- <link name="arm_link">
       <collision>
         <geometry>
           <box size="0.01 0.01 0.01"/>
         </geometry>
         <origin rpy="0 0 0" xyz="0 0 0"/>
       </collision>
-    </link>
+    </link> -->
 
 	<!-- Color of bot -->
 	<gazebo reference="left_wheel_front">
