@@ -36,7 +36,7 @@ class Pick_Place_EE_Pose():
         self.pose_target = Pose()
         self.rate = rospy.Rate(10)
 
-        self.offset_x = 0.0
+        self.offset_x = -0.005
         self.offset_y = 0.015
         self.offset_z = 0.033
 

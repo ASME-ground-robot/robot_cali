@@ -1,0 +1,11 @@
+moveit_setup_assistant_config:
+  URDF:
+    package: rover_autonav
+    relative_path: urdf/cali_urdf_complete_v3.xacro
+    xacro_args: ""
+  SRDF:
+    relative_path: config/ur3e.srdf
+  CONFIG:
+    author_name: Jason Koubi
+    author_email: jazkoubi@gmail.com
+    generated_timestamp: 1661245486

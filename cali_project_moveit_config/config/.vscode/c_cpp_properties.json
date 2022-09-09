@@ -1,0 +1,51 @@
+{
+  "configurations": [
+    {
+      "browse": {
+        "databaseFilename": "${default}",
+        "limitSymbolsToIncludedHeaders": false
+      },
+      "includePath": [
+        "/home/jason/ws_moveit/devel/include/**",
+        "/home/jason/catkin_ws/devel/include/**",
+        "/opt/ros/melodic/include/**",
+        "/home/jason/ws_moveit/src/moveit/moveit_planners/chomp/chomp_motion_planner/include/**",
+        "/home/jason/catkin_ws/src/gazebo-pkgs/gazebo_grasp_plugin/include/**",
+        "/home/jason/catkin_ws/src/gazebo-pkgs/gazebo_state_plugins/include/**",
+        "/home/jason/catkin_ws/src/gazebo-pkgs/gazebo_test_tools/include/**",
+        "/home/jason/catkin_ws/src/gazebo-pkgs/gazebo_version_helpers/include/**",
+        "/home/jason/catkin_ws/src/gazebo-pkgs/gazebo_world_plugin_loader/include/**",
+        "/home/jason/ws_moveit/src/geometric_shapes/include/**",
+        "/home/jason/catkin_ws/src/manipulation/include/**",
+        "/home/jason/ws_moveit/src/moveit/moveit_planners/chomp/chomp_interface/include/**",
+        "/home/jason/ws_moveit/src/moveit_resources/prbt_ikfast_manipulator_plugin/include/**",
+        "/home/jason/ws_moveit/src/moveit/moveit_ros/benchmarks/include/**",
+        "/home/jason/ws_moveit/src/moveit/moveit_plugins/moveit_ros_control_interface/include/**",
+        "/home/jason/ws_moveit/src/moveit/moveit_ros/move_group/include/**",
+        "/home/jason/ws_moveit/src/moveit/moveit_ros/occupancy_map_monitor/include/**",
+        "/home/jason/ws_moveit/src/moveit/moveit_ros/robot_interaction/include/**",
+        "/home/jason/ws_moveit/src/moveit/moveit_ros/moveit_servo/include/**",
+        "/home/jason/ws_moveit/src/moveit/moveit_setup_assistant/include/**",
+        "/home/jason/ws_moveit/src/moveit/moveit_plugins/moveit_simple_controller_manager/include/**",
+        "/home/jason/ws_moveit/src/moveit_visual_tools/include/**",
+        "/home/jason/catkin_ws/src/general-message-pkgs/object_msgs_tools/include/**",
+        "/home/jason/catkin_ws/src/perception/include/**",
+        "/home/jason/ws_moveit/src/moveit/moveit_planners/pilz_industrial_motion_planner/include/**",
+        "/home/jason/ws_moveit/src/moveit/moveit_planners/pilz_industrial_motion_planner_testutils/include/**",
+        "/home/jason/catkin_ws/src/roboticsgroup_gazebo_plugins/include/**",
+        "/home/jason/catkin_ws/src/roboticsgroup_upatras_gazebo_plugins/include/**",
+        "/home/jason/ws_moveit/src/rviz_visual_tools/include/**",
+        "/home/jason/ws_moveit/src/moveit/moveit_planners/sbpl/core/sbpl_interface/include/**",
+        "/home/jason/ws_moveit/src/srdfdom/include/**",
+        "/home/jason/catkin_ws/src/surface_perception/include/**",
+        "/usr/include/**"
+      ],
+      "name": "ROS",
+      "intelliSenseMode": "gcc-x64",
+      "compilerPath": "/usr/bin/gcc",
+      "cStandard": "gnu11",
+      "cppStandard": "c++14"
+    }
+  ],
+  "version": 4
+}
