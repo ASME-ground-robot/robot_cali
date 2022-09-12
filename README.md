@@ -377,6 +377,18 @@ rosrun manipulation release_real.py
 <img src="https://github.com/ASME-ground-robot/2021-22/blob/main/doc/mission_v3.gif" width="600" />
 
 # Real Robot
+
+## Dcumentation
+[Arduino libraries](https://www.arduino.cc/reference/en/libraries/category/device-control/) 
+
+[Arduino library for the Pololu Dual G2 High Power Motor Driver Shields](https://github.com/pololu/dual-g2-high-power-motor-shield) 
+
+[Arduino library for L298N](https://github.com/AndreaLombardo/L298N) 
+
+
+
+
+
 ## Operating the Robotic Arm
 
 Directories: 
