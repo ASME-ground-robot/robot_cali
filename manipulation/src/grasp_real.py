@@ -59,7 +59,7 @@ class Pick_Place_EE_Pose():
         print("Reference frame: %s" %
       self.group_arm.get_planning_frame())  # = world = base_link
 
-        print("End effector: %s" % self.group_arm.get_end_effector_link())  # = wrist_3_link
+        print("End effector: %s" % self.group_arm.get_end_effector_link())  # = end_effector_link
 
         print("Robot Groups:")
         print(self.robot.get_group_names())

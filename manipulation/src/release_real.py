@@ -51,6 +51,21 @@ class Release():
 
         self.group_gripper.go(wait=True)
         rospy.sleep(2)
+
+    def retreat(self):
+        # Step3: Retreat/Move back [ARM GROUP]
+        self.group_variable_values_arm_goal[0] = 0
+        self.group_variable_values_arm_goal[1] = 0.45
+        self.group_variable_values_arm_goal[2] = -0.82
+        self.group_variable_values_arm_goal[3] = 1.95
+        self.group_variable_values_arm_goal[4] = 0
+        self.group_arm.set_joint_value_target(
+            self.group_variable_values_arm_goal)
+
+        self.plan3 = self.group_arm.plan()
+
+        self.group_arm.go(wait=True)
+        rospy.sleep(2)
         
 
     def main(self):
@@ -62,6 +77,8 @@ class Release():
         release_object.go_to_trash()
         rospy.loginfo('release coke can..')
         release_object.open_gripper()
+        rospy.loginfo('Retreating..')
+        release_object.retreat()
         
         rospy.loginfo('Shuting Down ..')
         moveit_commander.roscpp_shutdown()
