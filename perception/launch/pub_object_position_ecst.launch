@@ -1,0 +1,11 @@
+<launch>
+
+  
+    <node pkg ="perception"
+        type="pub_object_position_ecst.py"
+        name="object_data_extract_node"
+        output="screen">
+    </node>
+  
+  
+</launch>

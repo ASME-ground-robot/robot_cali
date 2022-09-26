@@ -1,0 +1,11 @@
+<launch>
+
+  
+    <node pkg ="manipulation"
+        type="perception_pose.py"
+        name="orient_camera_node"
+        output="screen">
+    </node>
+  
+  
+</launch>

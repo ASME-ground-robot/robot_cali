@@ -1,0 +1,23 @@
+FROM ros_melodic:latest
+
+# Change the default shell to Bash
+SHELL [ "/bin/bash" , "-c" ]
+
+# Install Git
+RUN apt-get update && apt-get install -y git && apt-get install -y build-essential
+
+# Create a Catkin workspace and clone catkin_ws repo
+RUN source /opt/ros/melodic/setup.bash \
+ && mkdir -p /catkin_ws/src \
+ && cd /catkin_ws/src \
+ && catkin_init_workspace \
+ && git clone -b melodic-devel https://github.com/ROBOTIS-GIT/turtlebot3.git 
+
+# Build the Catkin workspace and ensure it's sourced
+RUN source /opt/ros/melodic/setup.bash \
+ && cd catkin_ws \
+ && catkin_make
+RUN echo "source /catkin_ws/devel/setup.bash" >> ~/.bashrc
+
+# Set the working folder at startup
+WORKDIR /catkin_ws

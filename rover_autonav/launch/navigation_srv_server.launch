@@ -1,0 +1,11 @@
+<launch>
+
+  
+    <node pkg ="rover_autonav"
+        type="navigation.py"
+        name="go_to_poi"
+        output="screen">
+    </node>
+  
+  
+</launch>

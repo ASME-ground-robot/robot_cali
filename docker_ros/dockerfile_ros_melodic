@@ -1,0 +1,8 @@
+FROM osrf/ros:melodic-desktop-full
+
+# Install ROS Melodic pkgs
+# RUN apt-get update \
+#  && apt-get install 
+
+RUN echo "source /opt/ros/noetic/setup.bash" >> ~/.bashrc
+

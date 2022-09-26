@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+<launch>
+
+   
+
+    <!-- XACRO file ????? -->
+    <param name="robot_description" command="$(find xacro)/xacro --inorder '$(find rover_autonav)/urdf/cali_urdf_complete_v3.xacro'" />
+
+    <!-- Combine joint values -->
+    <node name="robot_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher" respawn= "false" output="screen" />
+
+
+
+    <node name="rviz_perception" pkg="rviz" type="rviz" args="-d $(find rover_autonav)/rviz_config/arm_fixed_to_ground.rviz" />
+
+</launch>
