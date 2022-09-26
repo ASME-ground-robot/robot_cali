@@ -20,9 +20,10 @@ obstacles_laser:
     laser: {data_type: LaserScan, clearing: true, marking: true, topic: scan, inf_is_valid: true, obstacle_range: 5.5}
     #laser2: {}
 inflation_global:
-    inflation_radius: 0.65
+    inflation_radius: 0.5
+    # inflation_radius: 0.65
 inflation_local:
-    inflation_radius: 0.3
+    inflation_radius: 0.1
 
 
 
