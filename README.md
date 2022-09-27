@@ -395,7 +395,7 @@ First, we launch <strong>roscore</strong> (<em>shell#1</em>):
 roscore
 ```
 
-Then (<em>shell#2</em>):
+Set the connection between Arduino and ROS using <strong>rosserial</strong> (<em>shell#2</em>):
 
 ```bash
 rosrun rosserial_python serial_node.py _port:=/dev/ttyACM0 _baud:=115200
@@ -407,21 +407,48 @@ Now, launch <strong>teleop</strong> (<em>shell#3</em>):
 rosrun teleop_twist_keyboard teleop_twist_keyboard.py
 ```
 
-## Communication with the LiDAR:
+## Setting the LiDAR and Odometry:
 
-In a new terminal, check the permission and change it (<em>shell#4</em>) : 
+In a new terminal, check the permission and change them (<em>shell#4</em>) : 
 
 ```bash
 ls -l /dev | grep ttyUSB
 sudo chmod 666 /dev/ttyUSB0
-cd ~/cali_ws
-source devel/setup.bash
+```
+Launch the <strong>LiDAR</strong> node :
+
+```bash
 roslaunch rplidar_ros rplidar.launch 
+```
+
+
+Launch the <strong>TF</strong> node  (<em>shell#5</em>) :
+
+```bash
+roslaunch rover_autonav cali_ecst_lab.launch 
+```
+
+Launch the <strong>odometry</strong> node  (<em>shell#6</em>) :
+```bash
+roslaunch laser_scan_matcher_odometry example.launch 
 ```
 
 ## Autonomous Navigation
 
+### Mapping 
 
+Launch the <strong>Mapping</strong> node  (<em>shell#7</em>) :
+
+```bash
+roslaunch rover_autonav slam_gmapping.launch 
+```
+### Autonomous Navigation
+
+Launch the <strong>Autonomous Navigation</strong> node  (<em>shell#7</em>) :
+
+```bash
+roslaunch rover_autonav navigation_teb.launch 
+ ```
 
 ## Operating the Robotic Arm
 
