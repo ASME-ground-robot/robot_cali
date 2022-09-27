@@ -387,6 +387,40 @@ rosrun manipulation release_real.py
 
 
 
+## Communication with the wheel motors
+
+
+First, we launch <strong>roscore</strong> (<em>shell#1</em>):
+```bash
+roscore
+```
+
+Then (<em>shell#2</em>):
+
+```bash
+rosrun rosserial_python serial_node.py _port:=/dev/ttyACM0 _baud:=115200
+```
+
+Now, launch <strong>teleop</strong> (<em>shell#3</em>):
+
+```bash
+rosrun teleop_twist_keyboard teleop_twist_keyboard.py
+```
+
+## Communication with the LiDAR:
+
+In a new terminal, check the permission and change it (<em>shell#4</em>) : 
+
+```bash
+ls -l /dev | grep ttyUSB
+sudo chmod 666 /dev/ttyUSB0
+cd ~/cali_ws
+source devel/setup.bash
+roslaunch rplidar_ros rplidar.launch 
+```
+
+## Autonomous Navigation
+
 
 
 ## Operating the Robotic Arm
