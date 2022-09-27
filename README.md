@@ -418,6 +418,8 @@ sudo chmod 666 /dev/ttyUSB0
 Launch the <strong>LiDAR</strong> node :
 
 ```bash
+cd ~/cali_ws
+source devel/setup.bash 
 roslaunch rplidar_ros rplidar.launch 
 ```
 
@@ -425,11 +427,15 @@ roslaunch rplidar_ros rplidar.launch
 Launch the <strong>TF</strong> node  (<em>shell#5</em>) :
 
 ```bash
+cd ~/project_cali
+source devel/setup.bash 
 roslaunch rover_autonav cali_ecst_lab.launch 
 ```
 
 Launch the <strong>odometry</strong> node  (<em>shell#6</em>) :
 ```bash
+cd ~/cali_ws
+source devel/setup.bash 
 roslaunch laser_scan_matcher_odometry example.launch 
 ```
 
@@ -440,6 +446,8 @@ roslaunch laser_scan_matcher_odometry example.launch
 Launch the <strong>Mapping</strong> node  (<em>shell#7</em>) :
 
 ```bash
+cd ~/project_cali
+source devel/setup.bash 
 roslaunch rover_autonav slam_gmapping.launch 
 ```
 ### Autonomous Navigation
@@ -447,6 +455,8 @@ roslaunch rover_autonav slam_gmapping.launch
 Launch the <strong>Autonomous Navigation</strong> node  (<em>shell#7</em>) :
 
 ```bash
+cd ~/project_cali
+source devel/setup.bash 
 roslaunch rover_autonav navigation_teb.launch 
  ```
 
