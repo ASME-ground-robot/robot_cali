@@ -450,9 +450,21 @@ cd ~/project_cali
 source devel/setup.bash 
 roslaunch rover_autonav slam_gmapping.launch 
 ```
+
+## Localization
+
+Close previous shell and launch the <strong>Localization</strong> node (<em>shell#7</em>) :
+
+```bash
+cd ~/project_cali
+source devel/setup.bash 
+vi src/rover_autonav/launch/localization_ecst_lab.launch 
+```
+
 ### Autonomous Navigation
 
-Launch the <strong>Autonomous Navigation</strong> node  (<em>shell#7</em>) :
+
+Close previous shell and launch the <strong>Autonomous Navigation</strong> node  (<em>shell#7</em>) :
 
 ```bash
 cd ~/project_cali
