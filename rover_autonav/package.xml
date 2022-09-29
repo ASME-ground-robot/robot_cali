@@ -37,6 +37,6 @@ for rover_autonav robot</p>
   
   <export>
     <architecture_independent />
-     <gazebo_ros plugin_path="${prefix}/lib" gazebo_media_path="${prefix}"/>
+     <gazebo_ros plugin_path="${prefix}/lib" gazebo_media_path="${prefix}" gazebo_model_path="${prefix}/world/building_editor_models"/>
   </export>
 </package>

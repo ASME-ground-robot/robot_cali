@@ -8604,7 +8604,8 @@
           <pose frame=''>0 0 0 0 -0 0</pose>
           <geometry>
             <mesh>
-              <uri>/home/jason/catkin_ws/src/rover_autonav/meshes/CALI_TABLE_MODEL_METERS_2_updated.stl</uri>
+              <!-- <uri>/home/jason/catkin_ws/src/rover_autonav/meshes/CALI_TABLE_MODEL_METERS_2_updated.stl</uri> -->
+              <uri>model://ecst_table/CALI_TABLE_MODEL_METERS_2_updated.stl</uri>
               <scale>1 1 1</scale>
             </mesh>
           </geometry>
@@ -8765,7 +8766,8 @@
           <pose frame=''>0 0 0 0 -0 0</pose>
           <geometry>
             <mesh>
-              <uri>/home/jason/catkin_ws/src/rover_autonav/meshes/trash_can.stl</uri>
+              <!-- <uri>/home/jason/catkin_ws/src/rover_autonav/meshes/trash_can.stl</uri> -->
+              <uri>model://trash_can/trash_can.stl</uri>
               <scale>1 1 1</scale>
             </mesh>
           </geometry>
@@ -8788,7 +8790,8 @@
           <pose frame=''>0 0 0 0 -0 0</pose>
           <geometry>
             <mesh>
-              <uri>/home/jason/catkin_ws/src/rover_autonav/meshes/trash_can.stl</uri>
+              <!-- <uri>/home/jason/catkin_ws/src/rover_autonav/meshes/trash_can.stl</uri> -->
+              <uri>model://trash_can/trash_can.stl</uri>
               <scale>1 1 1</scale>
             </mesh>
           </geometry>

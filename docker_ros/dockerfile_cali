@@ -4,14 +4,15 @@ FROM ros_melodic:latest
 SHELL [ "/bin/bash" , "-c" ]
 
 # Install Git
-RUN apt-get update && apt-get install -y git && apt-get install -y build-essential
+RUN apt-get update && apt-get install -y git && apt-get install -y build-essential ros-melodic-object-recognition-msgs ros-melodic-move-base-msgs ros-melodic-rqt-joint-trajectory-controller ros-melodic-scaled-joint-trajectory-controller ros-melodic-gripper-action-controller
+
 
 # Create a Catkin workspace and clone catkin_ws repo
 RUN source /opt/ros/melodic/setup.bash \
  && mkdir -p /catkin_ws/src \
  && cd /catkin_ws/src \
  && catkin_init_workspace \
- && git clone -b melodic-devel https://github.com/ROBOTIS-GIT/turtlebot3.git 
+ && git clone -b master https://github.com/jkoubs/project_cali.git 
 
 # Build the Catkin workspace and ensure it's sourced
 RUN source /opt/ros/melodic/setup.bash \
