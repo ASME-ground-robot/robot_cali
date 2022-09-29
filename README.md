@@ -458,7 +458,7 @@ Close previous shell and launch the <strong>Localization</strong> node (<em>shel
 ```bash
 cd ~/project_cali
 source devel/setup.bash 
-vi src/rover_autonav/launch/localization_ecst_lab.launch 
+roslaunch rover_autonav localization_ecst_lab.launch 
 ```
 
 ### Autonomous Navigation
