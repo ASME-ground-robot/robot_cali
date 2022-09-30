@@ -4,7 +4,7 @@ FROM ros_melodic:latest
 SHELL [ "/bin/bash" , "-c" ]
 
 # Install Git
-RUN apt-get update && apt-get install -y git && apt-get install -y build-essential terminator ros-melodic-object-recognition-msgs ros-melodic-move-base-msgs ros-melodic-rqt-joint-trajectory-controller ros-melodic-scaled-joint-trajectory-controller ros-melodic-gripper-action-controller ros-melodic-map-server ros-melodic-move-base ros-melodic-amcl ros-melodic-teb-local-planner
+RUN apt-get update && apt-get install -y git && apt-get install -y build-essential terminator ros-melodic-object-recognition-msgs ros-melodic-move-base-msgs ros-melodic-rqt-joint-trajectory-controller ros-melodic-scaled-joint-trajectory-controller ros-melodic-gripper-action-controller ros-melodic-map-server ros-melodic-move-base ros-melodic-amcl ros-melodic-teb-local-planner ros-melodic-moveit-ros-move-group
  
 
 
