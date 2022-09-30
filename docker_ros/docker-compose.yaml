@@ -12,7 +12,7 @@ services:
       # you have to run "xhost +local:root". To disallow, "xhost -local:root"
       #
       # The volume below allows the container to have access to the
-      # "physical display". If the DISPLAY variable is :0(echo $DISPLAY), then the graphical
+      # "physical display". If the DISPLAY variable is :0, then the graphical
       # things will be written at /tmp/.X11-unix/X0
       # ---------------------------------------------------------------------
       - /tmp/.X11-unix:/tmp/.X11-unix
@@ -28,4 +28,8 @@ services:
           source /opt/ros/melodic/setup.bash
           source /catkin_ws/devel/setup.bash
           source /usr/share/gazebo/setup.sh
-          roslaunch rover_autonav cali_ecst_lab.launch --screen
+          terminator -u --title="Docker Container"
+
+          # sleep infinity
+          # terminator
+          # roslaunch rover_autonav cali_ecst_lab.launch --screen
