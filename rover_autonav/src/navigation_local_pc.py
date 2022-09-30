@@ -17,13 +17,12 @@ class GoToPOI(object):
         # waits until the action server is up and running
         self.client.wait_for_server()
 
-        # Load the parameters in test_params.yaml into the ROS Parameter Server : NOT USEFUL ANYMORE BECAUSE I LOAD MY params using rosparam command="load" into launch file
-        
-        # os.chdir("/home/jason/catkin_ws/src/rover_autonav/params")
-        # self.paramlist = rosparam.load_file(
-        #     "goal_poses.yaml", default_namespace=None, verbose=False)
-        # for params, ns in self.paramlist:
-        #     rosparam.upload_params(ns, params)
+        # Load the parameters in test_params.yaml into the ROS Parameter Server
+        os.chdir("/home/jason/catkin_ws/src/rover_autonav/params")
+        self.paramlist = rosparam.load_file(
+            "goal_poses.yaml", default_namespace=None, verbose=False)
+        for params, ns in self.paramlist:
+            rosparam.upload_params(ns, params)
 
         # Get the parameters from the ROS Param Server
         self.position_x = rosparam.get_param('grasp_position/position/x')

@@ -1,6 +1,8 @@
 <launch>
 
-  
+    <!--First we load the parameters to we have set for the goal poses-->
+    <rosparam command="load" file="$(find rover_autonav)/params/goal_poses.yaml" />
+
     <node pkg ="rover_autonav"
         type="navigation.py"
         name="go_to_poi"
