@@ -3,7 +3,7 @@ version: '3'
 services:
   rosject:
     image: cali_base:latest
-    container_name: rosject_jason
+    container_name: cali_project
     network_mode: host
     privileged: true
     volumes:
