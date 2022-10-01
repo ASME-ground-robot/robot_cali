@@ -537,7 +537,7 @@ Now, we will build the second Image named <strong>cali_base</strong> using the <
 ```bash
 sudo docker build -f dockerfile_cali -t cali_base .
 ```
-## 3) Run the Final Image
+## 3) Create the Container
 
 <u><strong><em>Requirement</em></strong></u> : To run GUI applications in Docker on Linux hosts, you have to run <strong>"xhost +local:root"</strong>. To disallow, <strong>"xhost -local:root"</strong>. For Windows and Mac hosts please check : [Running GUI applications in Docker on Windows, Linux and Mac hosts](https://cuneyt.aliustaoglu.biz/en/running-gui-applications-in-docker-on-windows-linux-mac-hosts/). Can also found some more information about [Using GUI's with Docker](http://wiki.ros.org/docker/Tutorials/GUI).
 
