@@ -9,10 +9,11 @@ How to edit markdown files - https://www.markdownguide.org/cheat-sheet
  - [Simulation](#simulation)
    - [Making a Gazebo World](#making-a-gazebo-world)
    - [Autonomous Navigation](#autonomous-navigation)
-   - [Manipulation](#manipulation)
-   - [Perception](#perception)
+   - [Manipulation Pipeline](#manipulation-pipeline)
+   - [Perception Pipeline](#perception-pipeline)
    - [Mission Planner](#mission-planner)
  - [Real Robot](#real-robot)
+ - [Setting Up Docker](setting-up-docker)
 
 
 # About
@@ -159,7 +160,7 @@ Then in RViz we just need to select a goal pose using the <em><strong>2D Nav Goa
 
   <img src="https://github.com/ASME-ground-robot/2021-22/blob/main/doc/AN_ecst_lab.gif" width="600" />
 
-  ## Manipulation
+  ## Manipulation Pipeline
   First, we do some testings using <em><strong>rqt_joint_trajectory_controller</strong></em> to control the arm joints and also the <em><strong>/gripper_controller/gripper_cmd/goal</strong></em> topic to control the gripper.
   
   Then, we perform manipulation using <strong>MoveIt</strong>.
@@ -242,7 +243,7 @@ rosrun manipulation pick_place_joint_cmds.py
 
 
 
-## Perception
+## Perception Pipeline
 
 In order to perceive Cali's surroundings, an Intel Realsense d435 3D camera is used and placed on top of the last link of the arm. The data will then be used in ROS via a topic.
 
@@ -451,7 +452,7 @@ source devel/setup.bash
 roslaunch rover_autonav slam_gmapping.launch 
 ```
 
-## Localization
+### Localization
 
 Close previous shell and launch the <strong>Localization</strong> node (<em>shell#7</em>) :
 
@@ -513,3 +514,54 @@ Motion the ball located in between the gears of the end-effector
 ![Robotic Arm Instructions 5](https://github.com/CSULA-URC/2021-22/blob/main/doc/roboticarm5.jpg) ![Robotic Arm Instructions 5](https://github.com/CSULA-URC/2021-22/blob/main/doc/roboticarm5.jpg)
 
 Planning and executing poses are now permissible 
+
+# Setting Up Docker for Linux
+ 
+
+To get the full ROS code we will create <strong>two images</strong>. The first one will contain the <strong>ROS melodic distribution</strong> and the second, the <strong>ROS simulation codes</strong>.
+
+
+
+## 1) Build the 1st Image - ROS melodic Image
+
+We build the 1st image named <strong>ros_melodic</strong> using the <strong>dockerfile_ros_melodic</strong> Dockerfile and that will contain the ROS Melodic distribution.
+
+It will build an image on top of the <strong>ros:melodic-desktop-full</strong> image imported from the Docker Hub.
+
+```bash
+cd ~/catkin_ws/src/docker_ros
+sudo docker build -f dockerfile_ros_melodic -t ros_melodic .
+```
+
+## 2) Build the 2nd Image - Simulation codes
+
+Now, we will build the 2nd Image named <strong>cali_base</strong> using the <strong>dockerfile_cali</strong> Dockerfile that is based from the 1st one and that will contain the ROS simulation codes.
+
+```bash
+sudo docker build -f dockerfile_cali -t cali_base .
+```
+## 3) Run the Final Image
+
+<u><strong><em>Requirement</em></strong></u> : To allow docker to public GUI tools on your computer, you have to run <strong>"xhost +local:root"</strong>. To disallow, <strong>"xhost -local:root"</strong>.
+
+```bash
+xhost +local:root
+```
+
+
+We can now <strong>run</strong> the image by creating a container named <strong>cali_project</strong> using <strong>docker-compose</strong> :
+
+
+
+  ```bash
+ sudo docker-compose up
+ ```
+
+
+
+
+
+
+
+
+
