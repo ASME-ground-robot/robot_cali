@@ -517,7 +517,7 @@ Planning and executing poses are now permissible
 
 # Docker
  
-To get the full ROS code we will create <strong>two images</strong>. We will apply <strong>multi-stage builds</strong>, which use multiple <em>FROM</em> statements in a Dockerfile. The first image contains the <strong>ROS melodic distribution</strong> and the second, the <strong>ROS simulation codes</strong>. Finally we wi
+To get the full ROS code we will create <strong>two images</strong>. We will apply <strong>multi-stage builds</strong>, which use multiple <em>FROM</em> statements in a Dockerfile. The first image contains the <strong>ROS melodic distribution</strong> and the second, the <strong>ROS simulation codes</strong>. Finally we will run the last image by creating a container named <strong>cali_project</strong>.
 
 
 
