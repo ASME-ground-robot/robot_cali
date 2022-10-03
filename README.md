@@ -144,14 +144,29 @@ rosrun map_server map_saver -f ecst_lab_map
   <img src="https://github.com/ASME-ground-robot/2021-22/blob/main/doc/ecst_lab_map_updated.png" width="600" />
 
   ### 2) Localization
-  [Add description]
-  ### 3) Path Planning
-  [Add description]
+  Close all previous shells. Open a <strong>new</strong> terminal and spawn the robot in Gazebo (<em>shell#1</em>):
+
+  ```bash
+roslaunch rover_autonav spawn_cali_ecst_lab.launch
+```
+  In a <strong>second</strong> terminal, launch the <em><strong>localization</strong></em> node (<em>shell#2</em>):
+
+  ```bash
+roslaunch rover_autonav localization_ecst_lab.launch
+```
+
+  Once launched, need to set a <em><strong>2D Pose Estimate</strong></em> using Rviz. We can launch the teleoperation to move the robot around, we can see that this increases the localization estimate.
   ### 4) Launch Autonomous Navigation node
 
-  Close all previous shells and open a <strong>new</strong> terminal (<em>shell#1</em>):
+   Close all previous shells. Open a <strong>new</strong> terminal and spawn the robot in Gazebo (<em>shell#1</em>):
+
   ```bash
-roslaunch rover_autonav navigation.launch
+roslaunch rover_autonav spawn_cali_ecst_lab.launch
+```
+  In a <strong>second</strong> terminal, launch the <em><strong>Autonomous Navigation</strong></em> node (<em>shell#2</em>):
+
+  ```bash
+roslaunch rover_autonav navigation_teb.launch
 ```
 
 Then in RViz we just need to select a goal pose using the <em><strong>2D Nav Goal</strong></em> tool:
@@ -302,7 +317,7 @@ We can see that it is now able to grasp the object using our <strong>Perception/
 
 Close all previous shells:
 
-First, we <strong>spawn</strong> the robot in Gazebo (<em>shell#1</em>):
+First, we source the workspace and then <strong>spawn</strong> the robot in Gazebo (<em>shell#1</em>):
 
 ```bash
 cd ~/catkin_ws
@@ -317,61 +332,53 @@ roslaunch rover_autonav navigation_teb.launch
 Launch Navigation <strong>Service Server</strong> where we can choose among different goal poses (<em>shell#3</em>):
 
 ```bash
-rosrun rover_autonav navigation.py
+rosrun rover_autonav navigation_srv_server.py
 ```
-Call the <strong>Service</strong> to go to the <strong>grasp_position</strong> (<em>shell#4</em>):
+Call the <strong>Service</strong> to go to the <strong>grasp_position</strong> pose (<em>shell#4</em>):
 
 ```bash
 rosservice call /go_to_point "label: 'grasp_position'"
 ```
 
-Once arrived to the <strong>grasp_position</strong>, launch <strong>Moveit</strong> (<em>shell#5</em>):
+Once arrived to the <strong>grasp_position</strong>, launch <strong>Moveit</strong> (<em>shell#4</em>):
 
 ```bash
-cd ~/ws_moveit
-source devel/setup.bash
 roslaunch cali_project_moveit_config cali_planning_execution.launch
 ```
 
-Orient the camera towards the table surface (<em>shell#6</em>):
+Orient the camera towards the table surface (<em>shell#5</em>):
 
 ```bash
-cd ~/ws_moveit
-source devel/setup.bash
 rosrun manipulation perception_pose.py
 ```
 
-Once, the camera is oriented, launch the <strong>Perception</strong> node (<em>shell#7</em>):
+Once, the camera is oriented, launch the <strong>Perception</strong> node (<em>shell#5</em>):
 
 ```bash
 roslaunch perception surface_detection.launch
 ```
 
-Then, when the <strong>surface_detection</strong> algorithm has detected both surface and object, we extract the position data from the robot to the object (<em>shell#8</em>):
+Then, when the <strong>surface_detection</strong> algorithm has detected both surface and object, we extract the position data from the robot to the object (<em>shell#6</em>):
 
 ```bash
 rosrun perception pub_object_position_ecst.py
 ```
 
-We will use this data to launch the <strong>Perception/Manipulation</strong> pipeline (<em>shell#9</em>):
+We will use this data to launch the <strong>Perception/Manipulation</strong> pipeline (<em>shell#7</em>):
 
 ```bash
-cd ~/ws_moveit
-source devel/setup.bash
 rosrun manipulation grasp_real.py
 ```
 
-Once the coke can is grasped and retreated, we call our Navigation <strong>Service</strong> to go to the <strong>release_position</strong> (back to <em>shell#4</em>):
+Once the coke can is grasped and retreated, we can <strong>close shell #6 and # 5</strong>, then call our Navigation <strong>Service</strong> to go to the <strong>release_position</strong> pose (<em>shell#5</em>):
 
 ```bash
 rosservice call /go_to_point "label: 'release_position'"
 ```
 
-Finally, we <strong>release</strong> the coke can inside the trash can (<em>shell#10</em>):
+Finally, we <strong>release</strong> the coke can inside the trash can (<em>shell#5</em>):
 
 ```bash
-cd ~/ws_moveit
-source devel/setup.bash
 rosrun manipulation release_real.py
 ```
 
