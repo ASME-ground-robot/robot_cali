@@ -386,7 +386,7 @@ rosrun manipulation release_real.py
 
 # Real Robot
 
-## Dcumentation
+## Documentation
 [Arduino libraries](https://www.arduino.cc/reference/en/libraries/category/device-control/) 
 
 [Arduino library for the Pololu Dual G2 High Power Motor Driver Shields](https://github.com/pololu/dual-g2-high-power-motor-shield) 
