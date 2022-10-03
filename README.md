@@ -156,9 +156,9 @@ roslaunch rover_autonav localization_ecst_lab.launch
 ```
 
   Once launched, need to set a <em><strong>2D Pose Estimate</strong></em> using Rviz. We can launch the teleoperation to move the robot around, we can see that this increases the localization estimate.
-  ### 4) Launch Autonomous Navigation node
+  ### 3) Launch Autonomous Navigation node
 
-   Close all previous shells. Open a <strong>new</strong> terminal and spawn the robot in Gazebo (<em>shell#1</em>):
+  Close all previous shells. Open a <strong>new</strong> terminal and spawn the robot in Gazebo (<em>shell#1</em>):
 
   ```bash
 roslaunch rover_autonav spawn_cali_ecst_lab.launch
@@ -169,7 +169,7 @@ roslaunch rover_autonav spawn_cali_ecst_lab.launch
 roslaunch rover_autonav navigation_teb.launch
 ```
 
-Then in RViz we just need to select a goal pose using the <em><strong>2D Nav Goal</strong></em> tool:
+  Then in RViz we just need to select a goal pose using the <em><strong>2D Nav Goal</strong></em> tool:
 
   <img src="https://github.com/CSULA-URC/2021-22/blob/main/doc/autonomous_navigation.gif" width="600" />
 
